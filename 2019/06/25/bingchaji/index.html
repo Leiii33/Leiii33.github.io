@@ -3,7 +3,7 @@
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
   
-  <title>bingchaji | 横渠书馆</title>
+  <title>并查集 | 横渠书馆</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
     <meta name="keywords" content="Leiii's Blog">
@@ -11,14 +11,14 @@
   <meta name="description" content="问题描述：基于双亲表示法存储的折叠规则下的并查集 折叠规则：如果j是从i到根的路径上的一个节点，并且S.parents[j]≠S.root[i]，则把S.parents[j]置于S.root[i]。就是说，让j的双亲指针直接指向根。 实现：1234567891011121314//折叠规则压缩路径法//包含元素i的树中搜索根，并将从元素i到根的路径上的所有结点都变成根的结点int collapsi">
 <meta name="keywords" content="数据结构,并查集,折叠规则">
 <meta property="og:type" content="article">
-<meta property="og:title" content="bingchaji">
+<meta property="og:title" content="并查集">
 <meta property="og:url" content="http://leiii33.github.io/2019/06/25/bingchaji/index.html">
 <meta property="og:site_name" content="横渠书馆">
 <meta property="og:description" content="问题描述：基于双亲表示法存储的折叠规则下的并查集 折叠规则：如果j是从i到根的路径上的一个节点，并且S.parents[j]≠S.root[i]，则把S.parents[j]置于S.root[i]。就是说，让j的双亲指针直接指向根。 实现：1234567891011121314//折叠规则压缩路径法//包含元素i的树中搜索根，并将从元素i到根的路径上的所有结点都变成根的结点int collapsi">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-06-25T15:57:56.744Z">
+<meta property="og:updated_time" content="2019-06-25T15:59:16.559Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="bingchaji">
+<meta name="twitter:title" content="并查集">
 <meta name="twitter:description" content="问题描述：基于双亲表示法存储的折叠规则下的并查集 折叠规则：如果j是从i到根的路径上的一个节点，并且S.parents[j]≠S.root[i]，则把S.parents[j]置于S.root[i]。就是说，让j的双亲指针直接指向根。 实现：1234567891011121314//折叠规则压缩路径法//包含元素i的树中搜索根，并将从元素i到根的路径上的所有结点都变成根的结点int collapsi">
   
   
@@ -115,7 +115,7 @@
         
   
     <h1 class="post-title" itemprop="name">
-      bingchaji
+      并查集
     </h1>
     <div class="post-title-bar">
       <ul>
@@ -149,8 +149,8 @@
 <h3 id="实现："><a href="#实现：" class="headerlink" title="实现："></a>实现：</h3><figure class="highlight mel"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//折叠规则压缩路径法</span></span><br><span class="line"><span class="comment">//包含元素i的树中搜索根，并将从元素i到根的路径上的所有结点都变成根的结点</span></span><br><span class="line"><span class="keyword">int</span> collapsingfind(<span class="keyword">int</span> i)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">int</span> j;</span><br><span class="line">    <span class="keyword">for</span>(j=i;<span class="keyword">parent</span>[j]&gt;=<span class="number">0</span>;j=<span class="keyword">parent</span>[j]); <span class="comment">//搜索j的根</span></span><br><span class="line">    <span class="keyword">while</span>(i!=j)   <span class="comment">//向上逐次压缩</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> temp=<span class="keyword">parent</span>[i];</span><br><span class="line">        <span class="keyword">parent</span>[i]=j;</span><br><span class="line">        i=temp;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> j;  <span class="comment">//返回根</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
             <div class="post-copyright">
     <div class="content">
-        <p>最后更新： 2019年06月25日 23:57</p>
-        <p>原始链接： <a class="post-url" href="/2019/06/25/bingchaji/" title="bingchaji">http://leiii33.github.io/2019/06/25/bingchaji/</a></p>
+        <p>最后更新： 2019年06月25日 23:59</p>
+        <p>原始链接： <a class="post-url" href="/2019/06/25/bingchaji/" title="并查集">http://leiii33.github.io/2019/06/25/bingchaji/</a></p>
         <footer>
             <a href="http://leiii33.github.io">
                 <img src="/images/L.png" alt="Leiii33">
@@ -176,7 +176,7 @@
     <div class="post-share-list" id="share-list">
         <ul class="share-icons">
           <li>
-            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://leiii33.github.io/2019/06/25/bingchaji/&title=《bingchaji》 — 横渠书馆&pic=images/bcj.jpg" data-title="微博">
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://leiii33.github.io/2019/06/25/bingchaji/&title=《并查集》 — 横渠书馆&pic=images/bcj.jpg" data-title="微博">
               <i class="fa fa-weibo"></i>
             </a>
           </li>
@@ -186,7 +186,7 @@
             </a>
           </li>
           <li>
-            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://leiii33.github.io/2019/06/25/bingchaji/&title=《bingchaji》 — 横渠书馆&source=" data-title="QQ">
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://leiii33.github.io/2019/06/25/bingchaji/&title=《并查集》 — 横渠书馆&source=" data-title="QQ">
               <i class="fa fa-qq"></i>
             </a>
           </li>
@@ -196,7 +196,7 @@
             </a>
           </li>
           <li>
-            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《bingchaji》 — 横渠书馆&url=http://leiii33.github.io/2019/06/25/bingchaji/&via=http://leiii33.github.io" data-title="Twitter">
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《并查集》 — 横渠书馆&url=http://leiii33.github.io/2019/06/25/bingchaji/&via=http://leiii33.github.io" data-title="Twitter">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
