@@ -16,13 +16,13 @@
 <meta property="og:site_name" content="横渠书馆">
 <meta property="og:description" content="什么是单元测测试  定义：单元测试是对软件或者程序的基本（最小）组成单元的测试对象：方法、类特点：-可重复执行；-执行速度快；-独立无依赖；-结果不改变。   为什么要写单元测试  -使我们更了解需求；-使重构更容易；-更早了解程序的问题；-快速验证；-目标明确。   测试分类  单元测试-&amp;gt;集成测试-&amp;gt;端到端测试各测试占比   Junit介绍    Junit例子：123456789">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://leiii33.github.io/2019/10/12/Java单元测试/Java单元测试/test1.jpg">
-<meta property="og:image" content="http://leiii33.github.io/2019/10/12/Java单元测试/Java单元测试/test2.jpg">
-<meta property="og:updated_time" content="2019-10-12T15:03:15.239Z">
+<meta property="og:image" content="http://leiii33.github.io/2019/10/12/Java单元测试/images/test1.jpg">
+<meta property="og:image" content="http://leiii33.github.io/2019/10/12/Java单元测试/images/test2.jpg">
+<meta property="og:updated_time" content="2019-10-12T15:11:29.498Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java单元测试">
 <meta name="twitter:description" content="什么是单元测测试  定义：单元测试是对软件或者程序的基本（最小）组成单元的测试对象：方法、类特点：-可重复执行；-执行速度快；-独立无依赖；-结果不改变。   为什么要写单元测试  -使我们更了解需求；-使重构更容易；-更早了解程序的问题；-快速验证；-目标明确。   测试分类  单元测试-&amp;gt;集成测试-&amp;gt;端到端测试各测试占比   Junit介绍    Junit例子：123456789">
-<meta name="twitter:image" content="http://leiii33.github.io/2019/10/12/Java单元测试/Java单元测试/test1.jpg">
+<meta name="twitter:image" content="http://leiii33.github.io/2019/10/12/Java单元测试/images/test1.jpg">
   
   
   <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -140,16 +140,16 @@
     <div class="article-entry post-content" itemprop="articleBody">
       
             
-            <font face="楷体" size="5" color="#006030"><br><center>什么是单元测测试</center><br></font>
+            <font face="楷体" size="10" color="#007500"><br><center>什么是单元测测试</center><br></font>
 
 <p>定义：单元测试是对软件或者程序的基本（最小）组成单元的测试<br>对象：方法、类<br>特点：<br>-可重复执行；<br>-执行速度快；<br>-独立无依赖；<br>-结果不改变。  </p>
-<font face="楷体" size="5" color="#006030"><br><center>为什么要写单元测试</center><br></font>
+<font face="楷体" size="10" color="#007500"><br><center>为什么要写单元测试</center><br></font>
 
 <p>-使我们更了解需求；<br>-使重构更容易；<br>-更早了解程序的问题；<br>-快速验证；<br>-目标明确。  </p>
-<font face="楷体" size="5" color="#006030"><br><center>测试分类</center><br></font>
+<font face="楷体" size="10" color="#007500"><br><center>测试分类</center><br></font>
 
-<p>单元测试-&gt;集成测试-&gt;端到端测试<br><img src="./Java单元测试/test1.jpg" alt><br>各测试占比<br><img src="./Java单元测试/test2.jpg" alt>  </p>
-<font face="楷体" size="5" color="#006030"><br><center>Junit介绍</center><br></font>  
+<p>单元测试-&gt;集成测试-&gt;端到端测试<br><img src="./images/test1.jpg" alt><br>各测试占比<br><img src="./images/test2.jpg" alt>  </p>
+<font face="楷体" size="10" color="#006030"><br><center>Junit介绍</center><br></font>  
 
 <p>Junit例子：<br><figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">import</span> <span class="selector-tag">org</span><span class="selector-class">.junit</span>.*;</span><br><span class="line"><span class="selector-tag">import</span> <span class="selector-tag">static</span> <span class="selector-tag">org</span><span class="selector-class">.junit</span><span class="selector-class">.Assert</span><span class="selector-class">.fail</span>;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">public</span> <span class="selector-tag">class</span> <span class="selector-tag">ClassNameTest</span> &#123;</span><br><span class="line">    <span class="variable">@BeforeClass</span>    <span class="comment">//公开表态无返回值</span></span><br><span class="line">    public static void beforeClass() throws Exception&#123;</span><br><span class="line">        <span class="comment">//每次测试类执行前执行一次，主要用来初使化公共资源等</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="variable">@AfterClass</span>     <span class="comment">//公开表态无返回值</span></span><br><span class="line">    public static void afterClass() throws Exception&#123;</span><br><span class="line">        <span class="comment">//每次测试类执行完成后执行一次，主要用来释放资源或清理工作</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="variable">@Before</span></span><br><span class="line">    public void setup() throws Exception &#123;</span><br><span class="line">        <span class="comment">//每个测试案例执行前都会执行一次</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="variable">@After</span></span><br><span class="line">    public void teardown() throws Exception &#123;</span><br><span class="line">        <span class="comment">//每个测试案例执行完成后都会执行一次</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="variable">@Test</span></span><br><span class="line">    public void testMethodName_give_…_when_…_then_…() &#123;</span><br><span class="line">        <span class="selector-tag">fail</span>(<span class="string">"失败"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>常用注解：<br><figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">@Ignore</span> </span><br><span class="line">该注解标记的测试方法在测试中会被忽略</span><br><span class="line"><span class="variable">@Test</span></span><br><span class="line">    <span class="variable">@Test</span>(expected=xxxException.class) 断言该方法会抛出异常</span><br><span class="line">    <span class="variable">@Test</span>(timeout=<span class="number">1000</span>) 执行时间超过设置的值该案例会失败</span><br><span class="line"><span class="variable">@RunWith</span></span><br><span class="line">    <span class="variable">@RunWith</span>(Suite.class) 测试集运行器配合使用测试集功能</span><br><span class="line">    <span class="variable">@RunWith</span>(JUnit4.class) 默认运行器</span><br><span class="line">    <span class="variable">@RunWith</span>(Parameterized.class) 参数化运行器</span><br><span class="line">    <span class="variable">@RunWith</span>(Suite.class)</span><br><span class="line">    <span class="variable">@Suite</span>.SuiteClasses(&#123;CalculatorTest.class,SquareTest.class&#125;)</span><br><span class="line"><span class="variable">@Rule</span></span><br><span class="line">public class ExpectedExceptionsTest &#123; </span><br><span class="line">    <span class="variable">@Rule</span> </span><br><span class="line">    public ExpectedException thrown = ExpectedException.none(); </span><br><span class="line">    <span class="variable">@Test</span> </span><br><span class="line">    public void verifiesTypeAndMessage() &#123;</span><br><span class="line">        <span class="selector-tag">thrown</span><span class="selector-class">.expect</span>(RuntimeException.class);</span><br><span class="line">        <span class="selector-tag">thrown</span><span class="selector-class">.expectMessage</span>(<span class="string">"Runtime exception occurred"</span>);</span><br><span class="line">        <span class="selector-tag">throw</span> <span class="selector-tag">new</span> <span class="selector-tag">RuntimeException</span>(<span class="string">"Runtime exception occurred"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
@@ -158,7 +158,7 @@
 
             <div class="post-copyright">
     <div class="content">
-        <p>最后更新： 2019年10月12日 23:03</p>
+        <p>最后更新： 2019年10月12日 23:11</p>
         <p>原始链接： <a class="post-url" href="/2019/10/12/Java单元测试/" title="Java单元测试">http://leiii33.github.io/2019/10/12/Java单元测试/</a></p>
         <footer>
             <a href="http://leiii33.github.io">
@@ -185,7 +185,7 @@
     <div class="post-share-list" id="share-list">
         <ul class="share-icons">
           <li>
-            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://leiii33.github.io/2019/10/12/Java单元测试/&title=《Java单元测试》 — 横渠书馆&pic=http://leiii33.github.ioimages/L.png" data-title="微博">
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://leiii33.github.io/2019/10/12/Java单元测试/&title=《Java单元测试》 — 横渠书馆&pic=images/junit.jpg" data-title="微博">
               <i class="fa fa-weibo"></i>
             </a>
           </li>
