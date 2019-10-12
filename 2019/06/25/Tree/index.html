@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="横渠书馆">
 <meta property="og:description" content="问题描述： 1、树以孩子兄弟链表为数据结构，请设计算法，求树的深度。2、树以孩子兄弟链表为数据结构，请设计算法，求树的度。  实现： 1、求深度（递归）：求根节点的各个子节点的的深度，然后比较得出子节点深度的最大值，最后因为根节点的高度还没有算，所以最大值加1。2、求度：求根节点的各个子节点的度，然后与根节点的度比较，取最大值。  算法实现：123456789101112131415templat">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-06-25T15:47:22.354Z">
+<meta property="og:updated_time" content="2019-10-12T16:14:10.680Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数据结构-树">
 <meta name="twitter:description" content="问题描述： 1、树以孩子兄弟链表为数据结构，请设计算法，求树的深度。2、树以孩子兄弟链表为数据结构，请设计算法，求树的度。  实现： 1、求深度（递归）：求根节点的各个子节点的的深度，然后比较得出子节点深度的最大值，最后因为根节点的高度还没有算，所以最大值加1。2、求度：求根节点的各个子节点的度，然后与根节点的度比较，取最大值。  算法实现：123456789101112131415templat">
@@ -154,7 +154,7 @@
 <figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">template&lt;class ElemType&gt;</span><br><span class="line"><span class="keyword">int</span> childSiblingTree&lt;ElemType&gt;::Degree(childSibling&lt;ElemType&gt; *r)//递归求度</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span>(r == NULL)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        childSibling&lt;ElemType&gt; *p;</span><br><span class="line">        <span class="keyword">int</span> max = <span class="number">0</span>, d = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(p = FirstChild(r);p!=NULL;p=NextSibling(p))&#123;</span><br><span class="line">            d++;</span><br><span class="line">            <span class="keyword">int</span> <span class="function"><span class="keyword">sub</span> = <span class="title">Degree</span></span>(p);</span><br><span class="line">            max = (<span class="function"><span class="keyword">sub</span> &lt; <span class="title">max</span>) ? <span class="title">max</span> : <span class="title">sub</span></span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> (d &lt; max) ? max : d;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
             <div class="post-copyright">
     <div class="content">
-        <p>最后更新： 2019年06月25日 23:47</p>
+        <p>最后更新： 2019年10月13日 00:14</p>
         <p>原始链接： <a class="post-url" href="/2019/06/25/Tree/" title="数据结构-树">http://leiii33.github.io/2019/06/25/Tree/</a></p>
         <footer>
             <a href="http://leiii33.github.io">
@@ -181,7 +181,7 @@
     <div class="post-share-list" id="share-list">
         <ul class="share-icons">
           <li>
-            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://leiii33.github.io/2019/06/25/Tree/&title=《数据结构-树》 — 横渠书馆&pic=images/tree.jpg" data-title="微博">
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://leiii33.github.io/2019/06/25/Tree/&title=《数据结构-树》 — 横渠书馆&pic=https://upload-images.jianshu.io/upload_images/19774077-0339c5e4d05e143e.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" data-title="微博">
               <i class="fa fa-weibo"></i>
             </a>
           </li>
@@ -318,7 +318,7 @@
 <div class="sidebar-menu-box" id="sidebar-menu-box">
     <div class="sidebar-menu-box-container">
         <div id="sidebar-menu-box-categories">
-            <a class="category-link" href="/categories/数据结构/">数据结构</a><a class="category-link" href="/categories/随笔/">随笔</a>
+            <a class="category-link" href="/categories/Java/">Java</a><a class="category-link" href="/categories/数据结构/">数据结构</a><a class="category-link" href="/categories/随笔/">随笔</a>
         </div>
         <div id="sidebar-menu-box-tags">
             <a href="/tags/Java-单元测试/" style="font-size: 10px;">-Java -单元测试</a> <a href="/tags/并查集/" style="font-size: 10px;">并查集</a> <a href="/tags/折叠规则/" style="font-size: 10px;">折叠规则</a> <a href="/tags/数据结构/" style="font-size: 20px;">数据结构</a> <a href="/tags/树/" style="font-size: 10px;">树</a> <a href="/tags/颜氏家训/" style="font-size: 10px;">颜氏家训</a>
