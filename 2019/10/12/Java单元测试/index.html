@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>Java单元测试 | 横渠书馆</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="Leiii's Blog">
+  
+  <meta name="description" content="什么是单元测测试  定义：单元测试是对软件或者程序的基本（最小）组成单元的测试对象：方法、类特点：-可重复执行；-执行速度快；-独立无依赖；-结果不改变。   为什么要写单元测试  -使我们更了解需求；-使重构更容易；-更早了解程序的问题；-快速验证；-目标明确。   测试分类  单元测试-&amp;gt;集成测试-&amp;gt;端到端测试各测试占比   Junit介绍    Junit例子：123456789">
+<meta name="keywords" content="-Java -单元测试">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java单元测试">
+<meta property="og:url" content="http://leiii33.github.io/2019/10/12/Java单元测试/index.html">
+<meta property="og:site_name" content="横渠书馆">
+<meta property="og:description" content="什么是单元测测试  定义：单元测试是对软件或者程序的基本（最小）组成单元的测试对象：方法、类特点：-可重复执行；-执行速度快；-独立无依赖；-结果不改变。   为什么要写单元测试  -使我们更了解需求；-使重构更容易；-更早了解程序的问题；-快速验证；-目标明确。   测试分类  单元测试-&amp;gt;集成测试-&amp;gt;端到端测试各测试占比   Junit介绍    Junit例子：123456789">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://leiii33.github.io/2019/10/12/Java单元测试/Java单元测试/test1.jpg">
+<meta property="og:image" content="http://leiii33.github.io/2019/10/12/Java单元测试/Java单元测试/test2.jpg">
+<meta property="og:updated_time" content="2019-10-12T15:03:15.239Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java单元测试">
+<meta name="twitter:description" content="什么是单元测测试  定义：单元测试是对软件或者程序的基本（最小）组成单元的测试对象：方法、类特点：-可重复执行；-执行速度快；-独立无依赖；-结果不改变。   为什么要写单元测试  -使我们更了解需求；-使重构更容易；-更早了解程序的问题；-快速验证；-目标明确。   测试分类  单元测试-&amp;gt;集成测试-&amp;gt;端到端测试各测试占比   Junit介绍    Junit例子：123456789">
+<meta name="twitter:image" content="http://leiii33.github.io/2019/10/12/Java单元测试/Java单元测试/test1.jpg">
+  
+  
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/pace.min.js"></script>
+  
+
+  
+  
+
+</head>
+</html>
+<body>
+  <div id="container">
+      <header id="header">
+    <div id="banner"></div>
+    <div id="header-outer">
+        <div id="header-menu" class="header-menu-pos animated">
+            <div class="header-menu-container">
+                <a href="/" class="left">
+                    <span class="site-title">Leiii&#39;s Blog</span>
+                </a>
+                <nav id="header-menu-nav" class="right">
+                    
+                    <a href="/">
+                        <i class="fa fa-home"></i>
+                        <span>Home</span>
+                    </a>
+                    
+                    <a href="/archives">
+                        <i class="fa fa-archive"></i>
+                        <span>Archives</span>
+                    </a>
+                    
+                    <a href="/about">
+                        <i class="fa fa-user"></i>
+                        <span>About</span>
+                    </a>
+                    
+                </nav>
+                <a class="mobile-header-menu-button">
+                    <i class="fa fa-bars"></i>
+                </a>
+            </div>
+        </div>
+        <div id="header-row">
+            <div id="logo">
+                <a href="/">
+                    <img src="/images/L.png" alt="logo">
+                </a>
+            </div>
+            <div class="header-info">
+                <div id="header-title">
+                    
+                    <h2>
+                        Leiii&#39;s Blog
+                    </h2>
+                    
+                </div>
+                <div id="header-description">
+                    
+                    <h3>
+                        古来圣贤皆寂寞，惟有饮者留其名
+                    </h3>
+                    
+                </div>
+            </div>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a title="home" target="_blank" href="//leiii33.github.io">
+                            <i class="fa fa-home fa-2x"></i></a>
+                    
+                        <a title="github" target="_blank" href="//github.com/Leiii33">
+                            <i class="fa fa-github fa-2x"></i></a>
+                    
+                        <a title="weibo" target="_blank" href="//weibo.com/5255082301">
+                            <i class="fa fa-weibo fa-2x"></i></a>
+                    
+                        <a title="instagram" target="_blank" href="//www.instagram.com/leiyb33">
+                            <i class="fa fa-instagram fa-2x"></i></a>
+                    
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+      <div class="outer">
+        <section id="main" class="body-wrap"><article id="post-Java单元测试" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="post-title" itemprop="name">
+      Java单元测试
+    </h1>
+    <div class="post-title-bar">
+      <ul>
+          
+        <li>
+          <i class="fa fa-calendar"></i>  2019-10-12
+        </li>
+        <li>
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_value_page_pv"></span>
+        </li>
+      </ul>
+    </div>
+  
+
+          
+      </header>
+    
+    <div class="article-entry post-content" itemprop="articleBody">
+      
+            
+            <font face="楷体" size="5" color="#006030"><br><center>什么是单元测测试</center><br></font>
+
+<p>定义：单元测试是对软件或者程序的基本（最小）组成单元的测试<br>对象：方法、类<br>特点：<br>-可重复执行；<br>-执行速度快；<br>-独立无依赖；<br>-结果不改变。  </p>
+<font face="楷体" size="5" color="#006030"><br><center>为什么要写单元测试</center><br></font>
+
+<p>-使我们更了解需求；<br>-使重构更容易；<br>-更早了解程序的问题；<br>-快速验证；<br>-目标明确。  </p>
+<font face="楷体" size="5" color="#006030"><br><center>测试分类</center><br></font>
+
+<p>单元测试-&gt;集成测试-&gt;端到端测试<br><img src="./Java单元测试/test1.jpg" alt><br>各测试占比<br><img src="./Java单元测试/test2.jpg" alt>  </p>
+<font face="楷体" size="5" color="#006030"><br><center>Junit介绍</center><br></font>  
+
+<p>Junit例子：<br><figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">import</span> <span class="selector-tag">org</span><span class="selector-class">.junit</span>.*;</span><br><span class="line"><span class="selector-tag">import</span> <span class="selector-tag">static</span> <span class="selector-tag">org</span><span class="selector-class">.junit</span><span class="selector-class">.Assert</span><span class="selector-class">.fail</span>;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">public</span> <span class="selector-tag">class</span> <span class="selector-tag">ClassNameTest</span> &#123;</span><br><span class="line">    <span class="variable">@BeforeClass</span>    <span class="comment">//公开表态无返回值</span></span><br><span class="line">    public static void beforeClass() throws Exception&#123;</span><br><span class="line">        <span class="comment">//每次测试类执行前执行一次，主要用来初使化公共资源等</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="variable">@AfterClass</span>     <span class="comment">//公开表态无返回值</span></span><br><span class="line">    public static void afterClass() throws Exception&#123;</span><br><span class="line">        <span class="comment">//每次测试类执行完成后执行一次，主要用来释放资源或清理工作</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="variable">@Before</span></span><br><span class="line">    public void setup() throws Exception &#123;</span><br><span class="line">        <span class="comment">//每个测试案例执行前都会执行一次</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="variable">@After</span></span><br><span class="line">    public void teardown() throws Exception &#123;</span><br><span class="line">        <span class="comment">//每个测试案例执行完成后都会执行一次</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="variable">@Test</span></span><br><span class="line">    public void testMethodName_give_…_when_…_then_…() &#123;</span><br><span class="line">        <span class="selector-tag">fail</span>(<span class="string">"失败"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>常用注解：<br><figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">@Ignore</span> </span><br><span class="line">该注解标记的测试方法在测试中会被忽略</span><br><span class="line"><span class="variable">@Test</span></span><br><span class="line">    <span class="variable">@Test</span>(expected=xxxException.class) 断言该方法会抛出异常</span><br><span class="line">    <span class="variable">@Test</span>(timeout=<span class="number">1000</span>) 执行时间超过设置的值该案例会失败</span><br><span class="line"><span class="variable">@RunWith</span></span><br><span class="line">    <span class="variable">@RunWith</span>(Suite.class) 测试集运行器配合使用测试集功能</span><br><span class="line">    <span class="variable">@RunWith</span>(JUnit4.class) 默认运行器</span><br><span class="line">    <span class="variable">@RunWith</span>(Parameterized.class) 参数化运行器</span><br><span class="line">    <span class="variable">@RunWith</span>(Suite.class)</span><br><span class="line">    <span class="variable">@Suite</span>.SuiteClasses(&#123;CalculatorTest.class,SquareTest.class&#125;)</span><br><span class="line"><span class="variable">@Rule</span></span><br><span class="line">public class ExpectedExceptionsTest &#123; </span><br><span class="line">    <span class="variable">@Rule</span> </span><br><span class="line">    public ExpectedException thrown = ExpectedException.none(); </span><br><span class="line">    <span class="variable">@Test</span> </span><br><span class="line">    public void verifiesTypeAndMessage() &#123;</span><br><span class="line">        <span class="selector-tag">thrown</span><span class="selector-class">.expect</span>(RuntimeException.class);</span><br><span class="line">        <span class="selector-tag">thrown</span><span class="selector-class">.expectMessage</span>(<span class="string">"Runtime exception occurred"</span>);</span><br><span class="line">        <span class="selector-tag">throw</span> <span class="selector-tag">new</span> <span class="selector-tag">RuntimeException</span>(<span class="string">"Runtime exception occurred"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>参数化：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RunWith</span>(Parameterized.class)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PrimeFactorTest</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> PrimeFactor primeFactor;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> input;</span><br><span class="line">    <span class="keyword">private</span> List&lt;Integer&gt; expected;</span><br><span class="line">    <span class="comment">//构造函数</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">PrimeFactorTest</span><span class="params">(<span class="keyword">int</span> input, List&lt;Integer&gt; expected)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.input = input;</span><br><span class="line">        <span class="keyword">this</span>.expected = expected;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Parameterized</span>.Parameters</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Collection <span class="title">init</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> Arrays.asList(<span class="keyword">new</span> Object[][]&#123;</span><br><span class="line">             &#123;<span class="number">18</span>, Arrays.asList(<span class="number">2</span>, <span class="number">3</span>, <span class="number">3</span>)&#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testFactor_when_input_18_then_must_return_2_3_3</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        Assert.assertEquals(expected, primeFactor.factor(input));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>断言：<br>常用的断言方法如下：<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">assertEquals</span><span class="params">(a, b)</span></span>    测试a是否等于b（a和b是原始类型数值(primitive value)或者必须为实现比较而具有equal方法）</span><br><span class="line"><span class="function"><span class="title">assertFalse</span><span class="params">(a)</span></span>        测试a是否为false（假），a是一个Boolean数值。</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">assertTrue</span><span class="params">(a)</span></span>         测试a是否为true（真），a是一个Boolean数值</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">assertNotNull</span><span class="params">(a)</span></span>      测试a是否非空，a是一个对象或者null。</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">assertNull</span><span class="params">(a)</span></span>         测试a是否为null，a是一个对象或者null。</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">assertNotSame</span><span class="params">(a, b)</span></span>   测试a和b是否没有都引用同一个对象。</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">assertSame</span><span class="params">(a, b)</span></span>      测试a和b是否都引用同一个对象。</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">fail</span><span class="params">(string)</span></span>          Fail让测试失败，并给出指定信息。</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">assertThat</span><span class="params">(expected, Matcher)</span></span>  通过Matcher断言</span><br><span class="line"></span><br><span class="line">Hamcrest ：greaterThan，greaterThanOrEqualTo，lessThan，anything，anyOf，containsString</span><br></pre></td></tr></table></figure></p>
+
+            <div class="post-copyright">
+    <div class="content">
+        <p>最后更新： 2019年10月12日 23:03</p>
+        <p>原始链接： <a class="post-url" href="/2019/10/12/Java单元测试/" title="Java单元测试">http://leiii33.github.io/2019/10/12/Java单元测试/</a></p>
+        <footer>
+            <a href="http://leiii33.github.io">
+                <img src="/images/L.png" alt="Leiii33">
+                Leiii33
+            </a>
+        </footer>
+    </div>
+</div>
+
+      
+        
+            
+
+        
+    </div>
+    <footer class="article-footer">
+        
+        
+<div class="post-share">
+    <a href="javascript:;" id="share-sub" class="post-share-fab">
+        <i class="fa fa-share-alt"></i>
+    </a>
+    <div class="post-share-list" id="share-list">
+        <ul class="share-icons">
+          <li>
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://leiii33.github.io/2019/10/12/Java单元测试/&title=《Java单元测试》 — 横渠书馆&pic=http://leiii33.github.ioimages/L.png" data-title="微博">
+              <i class="fa fa-weibo"></i>
+            </a>
+          </li>
+          <li>
+            <a class="weixin share-sns" id="wxFab" href="javascript:;" data-title="微信">
+              <i class="fa fa-weixin"></i>
+            </a>
+          </li>
+          <li>
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://leiii33.github.io/2019/10/12/Java单元测试/&title=《Java单元测试》 — 横渠书馆&source=" data-title="QQ">
+              <i class="fa fa-qq"></i>
+            </a>
+          </li>
+          <li>
+            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://leiii33.github.io/2019/10/12/Java单元测试/" data-title="Facebook">
+              <i class="fa fa-facebook"></i>
+            </a>
+          </li>
+          <li>
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Java单元测试》 — 横渠书馆&url=http://leiii33.github.io/2019/10/12/Java单元测试/&via=http://leiii33.github.io" data-title="Twitter">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://leiii33.github.io/2019/10/12/Java单元测试/" data-title="Google+">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        </ul>
+     </div>
+</div>
+<div class="post-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;" id="wxShare-close">×</a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://leiii33.github.io/2019/10/12/Java单元测试/" alt="微信分享二维码">
+</div>
+
+<div class="mask"></div>
+
+        
+        <ul class="article-footer-menu">
+            
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/-Java-单元测试/" class="color2">-Java -单元测试</a>
+      
+  </li>
+
+        </ul>
+        
+    </footer>
+  </div>
+</article>
+
+
+
+<nav id="article-nav">
+  
+  
+    <a href="/2019/06/25/bingchaji/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title">并查集</span>
+      <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+    </a>
+  
+</nav>
+
+
+
+    
+</section>
+        
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+      <p>
+        Powered by  <a href="http://hexo.io/" target="_blank">Hexo</a>
+        Theme <a href="//github.com/wongminho/hexo-theme-miho" target="_blank">MiHo</a>
+      &copy; 2019 Leiii33<br>
+      </p>
+    </div>
+  </div>
+</footer>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script>
+  var mihoConfig = {
+      root: "http://leiii33.github.io",
+      animate: true,
+      isHome: false,
+      share: true,
+      reward: 0
+  }
+</script>
+<div class="sidebar">
+    <div id="sidebar-search" title="Search">
+        <i class="fa fa-search"></i>
+    </div>
+    <div id="sidebar-category" title="Categories">
+        <i class="fa fa-book"></i>
+    </div>
+    <div id="sidebar-tag" title="Tags">
+        <i class="fa fa-tags"></i>
+    </div>
+    <div id="sidebar-top">
+        <span class="sidebar-top-icon"><i class="fa fa-angle-up"></i></span>
+    </div>
+</div>
+<div class="sidebar-menu-box" id="sidebar-menu-box">
+    <div class="sidebar-menu-box-container">
+        <div id="sidebar-menu-box-categories">
+            <a class="category-link" href="/categories/数据结构/">数据结构</a><a class="category-link" href="/categories/随笔/">随笔</a>
+        </div>
+        <div id="sidebar-menu-box-tags">
+            <a href="/tags/Java-单元测试/" style="font-size: 10px;">-Java -单元测试</a> <a href="/tags/并查集/" style="font-size: 10px;">并查集</a> <a href="/tags/折叠规则/" style="font-size: 10px;">折叠规则</a> <a href="/tags/数据结构/" style="font-size: 20px;">数据结构</a> <a href="/tags/树/" style="font-size: 10px;">树</a> <a href="/tags/颜氏家训/" style="font-size: 10px;">颜氏家训</a>
+        </div>
+    </div>
+    <a href="javascript:;" class="sidebar-menu-box-close">&times;</a>
+</div>
+<div class="mobile-header-menu-nav" id="mobile-header-menu-nav">
+    <div class="mobile-header-menu-container">
+        <span class="title">Menus</span>
+        <ul class="mobile-header-menu-navbar">
+            
+            <li>
+                <a href="/">
+                    <i class="fa fa-home"></i><span>Home</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/archives">
+                    <i class="fa fa-archive"></i><span>Archives</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/about">
+                    <i class="fa fa-user"></i><span>About</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    <div class="mobile-header-tag-container">
+        <span class="title">Tags</span>
+        <div id="mobile-header-container-tags">
+            <a href="/tags/Java-单元测试/" style="font-size: 10px;">-Java -单元测试</a> <a href="/tags/并查集/" style="font-size: 10px;">并查集</a> <a href="/tags/折叠规则/" style="font-size: 10px;">折叠规则</a> <a href="/tags/数据结构/" style="font-size: 20px;">数据结构</a> <a href="/tags/树/" style="font-size: 10px;">树</a> <a href="/tags/颜氏家训/" style="font-size: 10px;">颜氏家训</a>
+        </div>
+    </div>
+</div>
+<div class="search-wrap">
+    <span class="search-close">&times;</span>
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+            <i class="icon icon-lg icon-chevron-left"></i>
+        </a>
+        <input class="search-field" placeholder="Search..." id="keywords">
+        <a id="search-submit" href="javascript:;">
+            <i class="fa fa-search"></i>
+        </a>
+    <div class="search-container" id="search-container">
+        <ul class="search-result" id="search-result">
+        </ul>
+    </div>
+</div>
+
+<div id="search-tpl">
+    <li class="search-result-item">
+        <a href="{url}" class="search-item-li">
+            <span class="search-item-li-title" title="{title}">{title}</span>
+        </a>
+    </li>
+</div>
+<script src="/js/search.js"></script>
+<script src="/js/main.js"></script>
+
+
+  <script src="//cdn.bootcss.com/particles.js/2.0.0/particles.min.js"></script>
+  <div id="particles"></div>
+  <script src="/js/particles.js"></script>
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  <script src="//cdn.bootcss.com/scrollReveal.js/3.0.5/scrollreveal.js"></script>
+  <script src="/js/animate.js"></script>
+
+
+  <script src="/js/pop-img.js"></script>
+  <script>
+     $(".article-entry p img").popImg();
+  </script>
+
+  </div>
+</body>
+</html>
