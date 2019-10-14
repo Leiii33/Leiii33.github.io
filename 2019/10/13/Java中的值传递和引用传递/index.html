@@ -3,23 +3,23 @@
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
   
-  <title>并查集 | 横渠书馆</title>
+  <title>Java中的值传递和引用传递 | 横渠书馆</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
     <meta name="keywords" content="Leiii's Blog">
   
-  <meta name="description" content="问题描述：基于双亲表示法存储的折叠规则下的并查集 折叠规则：如果j是从i到根的路径上的一个节点，并且S.parents[j]≠S.root[i]，则把S.parents[j]置于S.root[i]。就是说，让j的双亲指针直接指向根。 实现：1234567891011121314//折叠规则压缩路径法//包含元素i的树中搜索根，并将从元素i到根的路径上的所有结点都变成根的结点int collapsi">
-<meta name="keywords" content="数据结构,并查集,折叠规则">
+  <meta name="description" content="一、值传递和引用传递1、值传递  在方法的调用过程中，实参把它的实际值传递给形参，此传递过程就是将实参的值复制一份传递到函数中，这样如果在函数中对该值（形参的值）进行了操作将不会影响实参的值。因为是直接复制，所以这种方式在传递大量数据时，运行效率会特别低下。 2、引用传递  引用传递弥补了值传递的不足，如果传递的数据量很大，直接复过去的话，会占用大量的内存空间，而引用传递就是将对象的地址值传递过去">
+<meta name="keywords" content="-Java">
 <meta property="og:type" content="article">
-<meta property="og:title" content="并查集">
-<meta property="og:url" content="http://leiii33.github.io/2019/06/25/bingchaji/index.html">
+<meta property="og:title" content="Java中的值传递和引用传递">
+<meta property="og:url" content="http://leiii33.github.io/2019/10/13/Java中的值传递和引用传递/index.html">
 <meta property="og:site_name" content="横渠书馆">
-<meta property="og:description" content="问题描述：基于双亲表示法存储的折叠规则下的并查集 折叠规则：如果j是从i到根的路径上的一个节点，并且S.parents[j]≠S.root[i]，则把S.parents[j]置于S.root[i]。就是说，让j的双亲指针直接指向根。 实现：1234567891011121314//折叠规则压缩路径法//包含元素i的树中搜索根，并将从元素i到根的路径上的所有结点都变成根的结点int collapsi">
+<meta property="og:description" content="一、值传递和引用传递1、值传递  在方法的调用过程中，实参把它的实际值传递给形参，此传递过程就是将实参的值复制一份传递到函数中，这样如果在函数中对该值（形参的值）进行了操作将不会影响实参的值。因为是直接复制，所以这种方式在传递大量数据时，运行效率会特别低下。 2、引用传递  引用传递弥补了值传递的不足，如果传递的数据量很大，直接复过去的话，会占用大量的内存空间，而引用传递就是将对象的地址值传递过去">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-10-14T04:13:34.354Z">
+<meta property="og:updated_time" content="2019-10-14T04:13:02.101Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="并查集">
-<meta name="twitter:description" content="问题描述：基于双亲表示法存储的折叠规则下的并查集 折叠规则：如果j是从i到根的路径上的一个节点，并且S.parents[j]≠S.root[i]，则把S.parents[j]置于S.root[i]。就是说，让j的双亲指针直接指向根。 实现：1234567891011121314//折叠规则压缩路径法//包含元素i的树中搜索根，并将从元素i到根的路径上的所有结点都变成根的结点int collapsi">
+<meta name="twitter:title" content="Java中的值传递和引用传递">
+<meta name="twitter:description" content="一、值传递和引用传递1、值传递  在方法的调用过程中，实参把它的实际值传递给形参，此传递过程就是将实参的值复制一份传递到函数中，这样如果在函数中对该值（形参的值）进行了操作将不会影响实参的值。因为是直接复制，所以这种方式在传递大量数据时，运行效率会特别低下。 2、引用传递  引用传递弥补了值传递的不足，如果传递的数据量很大，直接复过去的话，会占用大量的内存空间，而引用传递就是将对象的地址值传递过去">
   
   
   <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -108,14 +108,14 @@
     </div>
 </header>
       <div class="outer">
-        <section id="main" class="body-wrap"><article id="post-bingchaji" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main" class="body-wrap"><article id="post-Java中的值传递和引用传递" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="post-title" itemprop="name">
-      并查集
+      Java中的值传递和引用传递
     </h1>
     <div class="post-title-bar">
       <ul>
@@ -123,12 +123,12 @@
               <li>
                   <i class="fa fa-book"></i>
                   
-                      <a href="/categories/数据结构/">数据结构</a>
+                      <a href="/categories/Java/">Java</a>
                   
               </li>
           
         <li>
-          <i class="fa fa-calendar"></i>  2019-06-25
+          <i class="fa fa-calendar"></i>  2019-10-13
         </li>
         <li>
           <i class="fa fa-eye"></i>
@@ -144,13 +144,16 @@
     <div class="article-entry post-content" itemprop="articleBody">
       
             
-            <h3 id="问题描述："><a href="#问题描述：" class="headerlink" title="问题描述："></a>问题描述：</h3><p>基于双亲表示法存储的折叠规则下的并查集</p>
-<h3 id="折叠规则："><a href="#折叠规则：" class="headerlink" title="折叠规则："></a>折叠规则：</h3><p>如果j是从i到根的路径上的一个节点，并且S.parents[j]≠S.root[i]，则把S.parents[j]置于S.root[i]。就是说，让j的双亲指针直接指向根。</p>
-<h3 id="实现："><a href="#实现：" class="headerlink" title="实现："></a>实现：</h3><figure class="highlight mel"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//折叠规则压缩路径法</span></span><br><span class="line"><span class="comment">//包含元素i的树中搜索根，并将从元素i到根的路径上的所有结点都变成根的结点</span></span><br><span class="line"><span class="keyword">int</span> collapsingfind(<span class="keyword">int</span> i)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">int</span> j;</span><br><span class="line">    <span class="keyword">for</span>(j=i;<span class="keyword">parent</span>[j]&gt;=<span class="number">0</span>;j=<span class="keyword">parent</span>[j]); <span class="comment">//搜索j的根</span></span><br><span class="line">    <span class="keyword">while</span>(i!=j)   <span class="comment">//向上逐次压缩</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> temp=<span class="keyword">parent</span>[i];</span><br><span class="line">        <span class="keyword">parent</span>[i]=j;</span><br><span class="line">        i=temp;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> j;  <span class="comment">//返回根</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+            <h3 id="一、值传递和引用传递"><a href="#一、值传递和引用传递" class="headerlink" title="一、值传递和引用传递"></a>一、值传递和引用传递</h3><h4 id="1、值传递"><a href="#1、值传递" class="headerlink" title="1、值传递"></a>1、值传递</h4><p>  在方法的调用过程中，实参把它的实际值传递给形参，此传递过程就是将实参的值复制一份传递到函数中，这样如果在函数中对该值（形参的值）进行了操作将不会影响实参的值。因为是直接复制，所以这种方式在传递大量数据时，运行效率会特别低下。</p>
+<h4 id="2、引用传递"><a href="#2、引用传递" class="headerlink" title="2、引用传递"></a>2、引用传递</h4><p>  引用传递弥补了值传递的不足，如果传递的数据量很大，直接复过去的话，会占用大量的内存空间，而引用传递就是将对象的地址值传递过去，函数接收的是原始值的首地址值。在方法的执行过程中，形参和实参的内容相同，指向同一块内存地址，也就是说操作的其实都是源数据，所以方法的执行将会影响到实际对象。 </p>
+<h3 id="二、值传递"><a href="#二、值传递" class="headerlink" title="二、值传递"></a>二、值传递</h3><p>示例：<br><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Test</span> &#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">change</span>(<span class="params"><span class="keyword">int</span> a</span>)</span>&#123;</span><br><span class="line">        a=<span class="number">50</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span>(<span class="params">String[] args</span>)</span> &#123;</span><br><span class="line">        <span class="keyword">int</span> a=<span class="number">10</span>;</span><br><span class="line">        System.<span class="keyword">out</span>.println(a);</span><br><span class="line">        change(a);</span><br><span class="line">        System.<span class="keyword">out</span>.println(a);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<hr>
+<p>输出：10 10</p>
+
             <div class="post-copyright">
     <div class="content">
         <p>最后更新： 2019年10月14日 12:13</p>
-        <p>原始链接： <a class="post-url" href="/2019/06/25/bingchaji/" title="并查集">http://leiii33.github.io/2019/06/25/bingchaji/</a></p>
+        <p>原始链接： <a class="post-url" href="/2019/10/13/Java中的值传递和引用传递/" title="Java中的值传递和引用传递">http://leiii33.github.io/2019/10/13/Java中的值传递和引用传递/</a></p>
         <footer>
             <a href="http://leiii33.github.io">
                 <img src="/images/L.png" alt="Leiii33">
@@ -176,7 +179,7 @@
     <div class="post-share-list" id="share-list">
         <ul class="share-icons">
           <li>
-            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://leiii33.github.io/2019/06/25/bingchaji/&title=《并查集》 — 横渠书馆&pic=https://upload-images.jianshu.io/upload_images/19774077-1ddc534e16bd0c0c.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" data-title="微博">
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://leiii33.github.io/2019/10/13/Java中的值传递和引用传递/&title=《Java中的值传递和引用传递》 — 横渠书馆&pic=https://upload-images.jianshu.io/upload_images/19774077-a985fd82d1822135.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" data-title="微博">
               <i class="fa fa-weibo"></i>
             </a>
           </li>
@@ -186,22 +189,22 @@
             </a>
           </li>
           <li>
-            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://leiii33.github.io/2019/06/25/bingchaji/&title=《并查集》 — 横渠书馆&source=" data-title="QQ">
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://leiii33.github.io/2019/10/13/Java中的值传递和引用传递/&title=《Java中的值传递和引用传递》 — 横渠书馆&source=" data-title="QQ">
               <i class="fa fa-qq"></i>
             </a>
           </li>
           <li>
-            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://leiii33.github.io/2019/06/25/bingchaji/" data-title="Facebook">
+            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://leiii33.github.io/2019/10/13/Java中的值传递和引用传递/" data-title="Facebook">
               <i class="fa fa-facebook"></i>
             </a>
           </li>
           <li>
-            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《并查集》 — 横渠书馆&url=http://leiii33.github.io/2019/06/25/bingchaji/&via=http://leiii33.github.io" data-title="Twitter">
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Java中的值传递和引用传递》 — 横渠书馆&url=http://leiii33.github.io/2019/10/13/Java中的值传递和引用传递/&via=http://leiii33.github.io" data-title="Twitter">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
           <li>
-            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://leiii33.github.io/2019/06/25/bingchaji/" data-title="Google+">
+            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://leiii33.github.io/2019/10/13/Java中的值传递和引用传递/" data-title="Google+">
               <i class="fa fa-google-plus"></i>
             </a>
           </li>
@@ -211,7 +214,7 @@
 <div class="post-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;" id="wxShare-close">×</a>
     <p>扫一扫，分享到微信</p>
-    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://leiii33.github.io/2019/06/25/bingchaji/" alt="微信分享二维码">
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://leiii33.github.io/2019/10/13/Java中的值传递和引用传递/" alt="微信分享二维码">
 </div>
 
 <div class="mask"></div>
@@ -223,11 +226,7 @@
   <li class="article-footer-tags">
     <i class="fa fa-tags"></i>
       
-    <a href="/tags/数据结构/" class="color5">数据结构</a>
-      
-    <a href="/tags/并查集/" class="color4">并查集</a>
-      
-    <a href="/tags/折叠规则/" class="color5">折叠规则</a>
+    <a href="/tags/-Java/" class="color1">-Java</a>
       
   </li>
 
@@ -241,19 +240,9 @@
 
 <nav id="article-nav">
   
-    <a href="/2019/10/12/Java单元测试/" id="article-nav-newer" class="article-nav-link-wrap">
-
-      <span class="article-nav-title">
-        <i class="fa fa-hand-o-left" aria-hidden="true"></i>
-        
-          Java单元测试
-        
-      </span>
-    </a>
   
-  
-    <a href="/2019/06/25/Test/" id="article-nav-older" class="article-nav-link-wrap">
-      <span class="article-nav-title">Test</span>
+    <a href="/2019/10/12/Java单元测试/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title">Java单元测试</span>
       <i class="fa fa-hand-o-right" aria-hidden="true"></i>
     </a>
   
