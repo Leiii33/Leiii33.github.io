@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>MyBatis(1) | 横渠书馆</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="Leiii's Blog">
+  
+  <meta name="description" content="一、原生JDBC我们首先来看一看原生的JDBC程序的代码：123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778package com.utils;import">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MyBatis(1)">
+<meta property="og:url" content="http://leiii33.github.io/2019/10/18/MyBatis1/index.html">
+<meta property="og:site_name" content="横渠书馆">
+<meta property="og:description" content="一、原生JDBC我们首先来看一看原生的JDBC程序的代码：123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778package com.utils;import">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://leiii33-1300432004.cos.ap-chengdu.myqcloud.com/MyBatisJG.png">
+<meta property="og:updated_time" content="2019-11-02T11:49:00.240Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="MyBatis(1)">
+<meta name="twitter:description" content="一、原生JDBC我们首先来看一看原生的JDBC程序的代码：123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778package com.utils;import">
+<meta name="twitter:image" content="https://leiii33-1300432004.cos.ap-chengdu.myqcloud.com/MyBatisJG.png">
+  
+  
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/pace.min.js"></script>
+  
+
+  
+  
+
+</head>
+</html>
+<body>
+  <div id="container">
+      <header id="header">
+    <div id="banner"></div>
+    <div id="header-outer">
+        <div id="header-menu" class="header-menu-pos animated">
+            <div class="header-menu-container">
+                <a href="/" class="left">
+                    <span class="site-title">Leiii&#39;s Blog</span>
+                </a>
+                <nav id="header-menu-nav" class="right">
+                    
+                    <a href="/">
+                        <i class="fa fa-home"></i>
+                        <span>Home</span>
+                    </a>
+                    
+                    <a href="/archives">
+                        <i class="fa fa-archive"></i>
+                        <span>Archives</span>
+                    </a>
+                    
+                    <a href="/about">
+                        <i class="fa fa-user"></i>
+                        <span>About</span>
+                    </a>
+                    
+                </nav>
+                <a class="mobile-header-menu-button">
+                    <i class="fa fa-bars"></i>
+                </a>
+            </div>
+        </div>
+        <div id="header-row">
+            <div id="logo">
+                <a href="/">
+                    <img src="/images/L.png" alt="logo">
+                </a>
+            </div>
+            <div class="header-info">
+                <div id="header-title">
+                    
+                    <h2>
+                        Leiii&#39;s Blog
+                    </h2>
+                    
+                </div>
+                <div id="header-description">
+                    
+                    <h3>
+                        古来圣贤皆寂寞，惟有饮者留其名
+                    </h3>
+                    
+                </div>
+            </div>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a title="home" target="_blank" href="//leiii33.github.io">
+                            <i class="fa fa-home fa-2x"></i></a>
+                    
+                        <a title="github" target="_blank" href="//github.com/Leiii33">
+                            <i class="fa fa-github fa-2x"></i></a>
+                    
+                        <a title="weibo" target="_blank" href="//weibo.com/5255082301">
+                            <i class="fa fa-weibo fa-2x"></i></a>
+                    
+                        <a title="instagram" target="_blank" href="//www.instagram.com/leiyb33">
+                            <i class="fa fa-instagram fa-2x"></i></a>
+                    
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+      <div class="outer">
+        <section id="main" class="body-wrap"><article id="post-MyBatis1" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="post-title" itemprop="name">
+      MyBatis(1)
+    </h1>
+    <div class="post-title-bar">
+      <ul>
+          
+              <li>
+                  <i class="fa fa-book"></i>
+                  
+                      <a href="/categories/-Java/">-Java</a>
+                  
+              </li>
+          
+        <li>
+          <i class="fa fa-calendar"></i>  2019-10-18
+        </li>
+        <li>
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_value_page_pv"></span>
+        </li>
+      </ul>
+    </div>
+  
+
+          
+      </header>
+    
+    <div class="article-entry post-content" itemprop="articleBody">
+      
+            
+            <h3 id="一、原生JDBC"><a href="#一、原生JDBC" class="headerlink" title="一、原生JDBC"></a>一、原生JDBC</h3><p>我们首先来看一看原生的JDBC程序的代码：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.utils;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.sql.Connection;</span><br><span class="line"><span class="keyword">import</span> java.sql.DriverManager;</span><br><span class="line"><span class="keyword">import</span> java.sql.PreparedStatement;</span><br><span class="line"><span class="keyword">import</span> java.sql.ResultSet;</span><br><span class="line"><span class="keyword">import</span> java.sql.SQLException;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@ClassName</span>: JdbcTest</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Description</span>: TODO(原始的JDBC操作数据库)</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> warcaft</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2015-6-27 下午3:31:22</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">JdbcTest</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 数据库连接</span></span><br><span class="line">        Connection connection = <span class="keyword">null</span>;</span><br><span class="line">        <span class="comment">// 预编译的Statement，使用预编译的Statement提高数据库性能</span></span><br><span class="line">        PreparedStatement preparedStatement = <span class="keyword">null</span>;</span><br><span class="line">        <span class="comment">// 结果 集</span></span><br><span class="line">        ResultSet resultSet = <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="comment">// 加载数据库驱动</span></span><br><span class="line">            Class.forName(<span class="string">"com.mysql.jdbc.Driver"</span>);</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 通过驱动管理类获取数据库链接</span></span><br><span class="line">            connection = DriverManager</span><br><span class="line">                    .getConnection(</span><br><span class="line">                            <span class="string">"jdbc:mysql://localhost:3306/mybatis?characterEncoding=utf-8"</span>,</span><br><span class="line">                            <span class="string">"root"</span>, <span class="string">"root"</span>);</span><br><span class="line">            <span class="comment">// 定义sql语句 ?表示占位符</span></span><br><span class="line">            String sql = <span class="string">"select * from t_user where username = ?"</span>;</span><br><span class="line">            <span class="comment">// 获取预处理statement</span></span><br><span class="line">            preparedStatement = connection.prepareStatement(sql);</span><br><span class="line">            <span class="comment">// 设置参数，第一个参数为sql语句中参数的序号（从1开始），第二个参数为设置的参数值</span></span><br><span class="line">            preparedStatement.setString(<span class="number">1</span>, <span class="string">"王五"</span>);</span><br><span class="line">            <span class="comment">// 向数据库发出sql执行查询，查询出结果集</span></span><br><span class="line">            resultSet = preparedStatement.executeQuery();</span><br><span class="line">            <span class="comment">// 遍历查询结果集</span></span><br><span class="line">            <span class="keyword">while</span> (resultSet.next()) &#123;</span><br><span class="line">                System.out.println(resultSet.getString(<span class="string">"id"</span>) + <span class="string">"  "</span></span><br><span class="line">                        + resultSet.getString(<span class="string">"username"</span>));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">            <span class="comment">// 释放资源</span></span><br><span class="line">            <span class="keyword">if</span> (resultSet != <span class="keyword">null</span>) &#123;</span><br><span class="line">                <span class="keyword">try</span> &#123;</span><br><span class="line">                    resultSet.close();</span><br><span class="line">                &#125; <span class="keyword">catch</span> (SQLException e) &#123;</span><br><span class="line">                    <span class="comment">// TODO Auto-generated catch block</span></span><br><span class="line">                    e.printStackTrace();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (preparedStatement != <span class="keyword">null</span>) &#123;</span><br><span class="line">                <span class="keyword">try</span> &#123;</span><br><span class="line">                    preparedStatement.close();</span><br><span class="line">                &#125; <span class="keyword">catch</span> (SQLException e) &#123;</span><br><span class="line">                    <span class="comment">// TODO Auto-generated catch block</span></span><br><span class="line">                    e.printStackTrace();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (connection != <span class="keyword">null</span>) &#123;</span><br><span class="line">                <span class="keyword">try</span> &#123;</span><br><span class="line">                    connection.close();</span><br><span class="line">                &#125; <span class="keyword">catch</span> (SQLException e) &#123;</span><br><span class="line">                    <span class="comment">// TODO Auto-generated catch block</span></span><br><span class="line">                    e.printStackTrace();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>那么原生的JDBC存在哪些问题呢：  </p>
+<ol>
+<li>数据库连接，使用时就创建，不使用立即释放，对数据库进行频繁连接开启和关闭，造成数据库资源浪费，影响数据库性能。<br>解决：使用数据库连接池管理数据库连接。</li>
+<li>将sql语句硬编码到java代码中，如果sql 语句修改，需要重新编译java代码，不利于系统维护。<br>解决：将sql语句配置在xml配置文件中，即使sql变化，不需要对java代码进行重新编译。</li>
+<li></li>
+</ol>
+<h3 id="二、MyBatis"><a href="#二、MyBatis" class="headerlink" title="二、MyBatis"></a>二、MyBatis</h3><h4 id="1-MyBatis架构："><a href="#1-MyBatis架构：" class="headerlink" title="1. MyBatis架构："></a>1. MyBatis架构：</h4><p><img src="https://leiii33-1300432004.cos.ap-chengdu.myqcloud.com/MyBatisJG.png" alt="MyBatis架构图解"></p>
+<ol>
+<li>SqlMapConfig.xml：此文件是MyBatis的全局配置文件，配置了MyBatis的运行环境等信息；<br>mapper.xml：sql映射文件，文件中配置了操作Sql的语句。mapper.xml文件需要在SqlMapConfig.xml文件中加载。</li>
+<li>SqlSessionFactory即会话工厂：通过MyBatis环境等配置信息构造；工厂能帮我们加载核心配置文件。加载了核心配置文件后就创建session,通过session可以对数据库进行操作。</li>
+<li>mybatis底层自定义了Executor执行器接口操作数据库，Executor接口有两个实现，一个是基本执行器、一个是缓存执行器。Executor是执行者，我们不需要管，因为mybatis已经为我们封装好了。mybatis直接执行sql语句。</li>
+<li>Mapped Statement也是MyBatis一个底层封装对象，它包装了MyBatis配置信息及sql映射信息等。mapper.xml文件中一个sql对应一个Mapped Statement对象，sql的id即是Mapped statement的id。</li>
+<li>Mapped Statement对sql执行输入参数进行定义，包括HashMap、基本类型、pojo，Executor通过Mapped Statement在执行sql前将输入的java对象映射至sql中，输入参数映射就是jdbc编程中对preparedStatement设置参数。</li>
+<li>Mapped Statement对sql执行输出结果进行定义，包括HashMap、基本类型、pojo，Executor通过Mapped Statement在执行sql后将输出结果映射至java对象中，输出结果映射过程相当于jdbc编程中对结果的解析处理过程。</li>
+<li>Mapped Statement是输入与输出中间过程中产生的一些对象，通过这些对象去访问数据库。  </li>
+</ol>
+<hr>
+<p>未完待续</p>
+
+            <div class="post-copyright">
+    <div class="content">
+        <p>最后更新： 2019年11月02日 19:49</p>
+        <p>原始链接： <a class="post-url" href="/2019/10/18/MyBatis1/" title="MyBatis(1)">http://leiii33.github.io/2019/10/18/MyBatis1/</a></p>
+        <footer>
+            <a href="http://leiii33.github.io">
+                <img src="/images/L.png" alt="Leiii33">
+                Leiii33
+            </a>
+        </footer>
+    </div>
+</div>
+
+      
+        
+            
+
+        
+    </div>
+    <footer class="article-footer">
+        
+        
+<div class="post-share">
+    <a href="javascript:;" id="share-sub" class="post-share-fab">
+        <i class="fa fa-share-alt"></i>
+    </a>
+    <div class="post-share-list" id="share-list">
+        <ul class="share-icons">
+          <li>
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://leiii33.github.io/2019/10/18/MyBatis1/&title=《MyBatis(1)》 — 横渠书馆&pic=https://leiii33-1300432004.cos.ap-chengdu.myqcloud.com/mybatis1.jpg" data-title="微博">
+              <i class="fa fa-weibo"></i>
+            </a>
+          </li>
+          <li>
+            <a class="weixin share-sns" id="wxFab" href="javascript:;" data-title="微信">
+              <i class="fa fa-weixin"></i>
+            </a>
+          </li>
+          <li>
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://leiii33.github.io/2019/10/18/MyBatis1/&title=《MyBatis(1)》 — 横渠书馆&source=" data-title="QQ">
+              <i class="fa fa-qq"></i>
+            </a>
+          </li>
+          <li>
+            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://leiii33.github.io/2019/10/18/MyBatis1/" data-title="Facebook">
+              <i class="fa fa-facebook"></i>
+            </a>
+          </li>
+          <li>
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《MyBatis(1)》 — 横渠书馆&url=http://leiii33.github.io/2019/10/18/MyBatis1/&via=http://leiii33.github.io" data-title="Twitter">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://leiii33.github.io/2019/10/18/MyBatis1/" data-title="Google+">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        </ul>
+     </div>
+</div>
+<div class="post-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;" id="wxShare-close">×</a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://leiii33.github.io/2019/10/18/MyBatis1/" alt="微信分享二维码">
+</div>
+
+<div class="mask"></div>
+
+        
+        <ul class="article-footer-menu">
+            
+            
+        </ul>
+        
+    </footer>
+  </div>
+</article>
+
+
+
+<nav id="article-nav">
+  
+  
+    <a href="/2019/10/12/Java单元测试/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title">Java单元测试</span>
+      <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+    </a>
+  
+</nav>
+
+
+
+    
+</section>
+        
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+      <p>
+        Powered by  <a href="http://hexo.io/" target="_blank">Hexo</a>
+        Theme <a href="//github.com/wongminho/hexo-theme-miho" target="_blank">MiHo</a>
+      &copy; 2019 Leiii33<br>
+      </p>
+    </div>
+  </div>
+</footer>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script>
+  var mihoConfig = {
+      root: "http://leiii33.github.io",
+      animate: true,
+      isHome: false,
+      share: true,
+      reward: 0
+  }
+</script>
+<div class="sidebar">
+    <div id="sidebar-search" title="Search">
+        <i class="fa fa-search"></i>
+    </div>
+    <div id="sidebar-category" title="Categories">
+        <i class="fa fa-book"></i>
+    </div>
+    <div id="sidebar-tag" title="Tags">
+        <i class="fa fa-tags"></i>
+    </div>
+    <div id="sidebar-top">
+        <span class="sidebar-top-icon"><i class="fa fa-angle-up"></i></span>
+    </div>
+</div>
+<div class="sidebar-menu-box" id="sidebar-menu-box">
+    <div class="sidebar-menu-box-container">
+        <div id="sidebar-menu-box-categories">
+            <a class="category-link" href="/categories/Java/">-Java</a><a class="category-link" href="/categories/设计模式/">-设计模式</a><a class="category-link" href="/categories/Java/">Java</a><a class="category-link" href="/categories/数据结构/">数据结构</a><a class="category-link" href="/categories/设计模式/">设计模式</a><a class="category-link" href="/categories/随笔/">随笔</a>
+        </div>
+        <div id="sidebar-menu-box-tags">
+            <a href="/tags/Java/" style="font-size: 20px;">-Java</a> <a href="/tags/Java-单元测试/" style="font-size: 10px;">-Java -单元测试</a> <a href="/tags/设计模式/" style="font-size: 10px;">-设计模式</a> <a href="/tags/并查集/" style="font-size: 10px;">并查集</a> <a href="/tags/折叠规则/" style="font-size: 10px;">折叠规则</a> <a href="/tags/数据结构/" style="font-size: 20px;">数据结构</a> <a href="/tags/树/" style="font-size: 10px;">树</a> <a href="/tags/颜氏家训/" style="font-size: 10px;">颜氏家训</a>
+        </div>
+    </div>
+    <a href="javascript:;" class="sidebar-menu-box-close">&times;</a>
+</div>
+<div class="mobile-header-menu-nav" id="mobile-header-menu-nav">
+    <div class="mobile-header-menu-container">
+        <span class="title">Menus</span>
+        <ul class="mobile-header-menu-navbar">
+            
+            <li>
+                <a href="/">
+                    <i class="fa fa-home"></i><span>Home</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/archives">
+                    <i class="fa fa-archive"></i><span>Archives</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/about">
+                    <i class="fa fa-user"></i><span>About</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    <div class="mobile-header-tag-container">
+        <span class="title">Tags</span>
+        <div id="mobile-header-container-tags">
+            <a href="/tags/Java/" style="font-size: 20px;">-Java</a> <a href="/tags/Java-单元测试/" style="font-size: 10px;">-Java -单元测试</a> <a href="/tags/设计模式/" style="font-size: 10px;">-设计模式</a> <a href="/tags/并查集/" style="font-size: 10px;">并查集</a> <a href="/tags/折叠规则/" style="font-size: 10px;">折叠规则</a> <a href="/tags/数据结构/" style="font-size: 20px;">数据结构</a> <a href="/tags/树/" style="font-size: 10px;">树</a> <a href="/tags/颜氏家训/" style="font-size: 10px;">颜氏家训</a>
+        </div>
+    </div>
+</div>
+<div class="search-wrap">
+    <span class="search-close">&times;</span>
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+            <i class="icon icon-lg icon-chevron-left"></i>
+        </a>
+        <input class="search-field" placeholder="Search..." id="keywords">
+        <a id="search-submit" href="javascript:;">
+            <i class="fa fa-search"></i>
+        </a>
+    <div class="search-container" id="search-container">
+        <ul class="search-result" id="search-result">
+        </ul>
+    </div>
+</div>
+
+<div id="search-tpl">
+    <li class="search-result-item">
+        <a href="{url}" class="search-item-li">
+            <span class="search-item-li-title" title="{title}">{title}</span>
+        </a>
+    </li>
+</div>
+<script src="/js/search.js"></script>
+<script src="/js/main.js"></script>
+
+
+  <script src="//cdn.bootcss.com/particles.js/2.0.0/particles.min.js"></script>
+  <div id="particles"></div>
+  <script src="/js/particles.js"></script>
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  <script src="//cdn.bootcss.com/scrollReveal.js/3.0.5/scrollreveal.js"></script>
+  <script src="/js/animate.js"></script>
+
+
+  <script src="/js/pop-img.js"></script>
+  <script>
+     $(".article-entry p img").popImg();
+  </script>
+
+  </div>
+</body>
+</html>
