@@ -3,27 +3,29 @@
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
   
-  <title>为什么StringBuilder不是线程安全的 | 横渠书馆</title>
+  <title>JVM:从入门到放弃 | 横渠书馆</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
     <meta name="keywords" content="Leiii's Blog">
   
-  <meta name="description" content="我们都知道：String 字符串常量StringBuffer 字符串变量（线程安全）StringBuilder 字符串变量（非线程安全)那么，为什么StringBuilder不是线程安全的。 分析StringBuilder和StringBuffer的内部实现跟String类一样，都是通过一个char数组存储字符串的，不同的是String类里面的char数组是final修饰的，是不可变的，而Stri">
+  <meta name="description" content="Java的口号是什么？“一次编译，到处运行！” 简单聊聊JVM我们在刚开始学习Java的时候，一定使用过javac来编译.java文件，然后使用java来运行.class文件。1.1 编译过程：.java文件是使用Java源码编译器（也就是上面说到的javac.exe）来完成的。总结一下就是由以下三个过程组成：1.2 JVM实现跨平台：通过Java源码编译器，我们成功的将.java文件生成出.cl">
 <meta name="keywords" content="-Java">
 <meta property="og:type" content="article">
-<meta property="og:title" content="为什么StringBuilder不是线程安全的">
-<meta property="og:url" content="http://leiii33.github.io/2019/09/15/为什么StringBuilder不是线程安全的/index.html">
+<meta property="og:title" content="JVM:从入门到放弃">
+<meta property="og:url" content="http://leiii33.github.io/2019/11/15/JVM-从入门到放弃/index.html">
 <meta property="og:site_name" content="横渠书馆">
-<meta property="og:description" content="我们都知道：String 字符串常量StringBuffer 字符串变量（线程安全）StringBuilder 字符串变量（非线程安全)那么，为什么StringBuilder不是线程安全的。 分析StringBuilder和StringBuffer的内部实现跟String类一样，都是通过一个char数组存储字符串的，不同的是String类里面的char数组是final修饰的，是不可变的，而Stri">
+<meta property="og:description" content="Java的口号是什么？“一次编译，到处运行！” 简单聊聊JVM我们在刚开始学习Java的时候，一定使用过javac来编译.java文件，然后使用java来运行.class文件。1.1 编译过程：.java文件是使用Java源码编译器（也就是上面说到的javac.exe）来完成的。总结一下就是由以下三个过程组成：1.2 JVM实现跨平台：通过Java源码编译器，我们成功的将.java文件生成出.cl">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://leiii33-1300432004.cos.ap-chengdu.myqcloud.com/StringBuilderTest.png">
-<meta property="og:image" content="https://leiii33-1300432004.cos.ap-chengdu.myqcloud.com/StringBuilderappend.png">
-<meta property="og:image" content="https://leiii33-1300432004.cos.ap-chengdu.myqcloud.com/AbstractStringBuilderappend.png">
-<meta property="og:updated_time" content="2019-10-15T14:43:02.266Z">
+<meta property="og:image" content="https://leiii33-1300432004.cos.ap-chengdu.myqcloud.com/javac.jpg">
+<meta property="og:image" content="https://leiii33-1300432004.cos.ap-chengdu.myqcloud.com/javac3.png">
+<meta property="og:image" content="https://leiii33-1300432004.cos.ap-chengdu.myqcloud.com/classloader.png">
+<meta property="og:image" content="https://leiii33-1300432004.cos.ap-chengdu.myqcloud.com/JIT.png">
+<meta property="og:image" content="https://leiii33-1300432004.cos.ap-chengdu.myqcloud.com/JVM%E5%86%85%E5%AD%98%E7%BB%93%E6%9E%84.jpg">
+<meta property="og:updated_time" content="2019-11-17T15:36:51.732Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="为什么StringBuilder不是线程安全的">
-<meta name="twitter:description" content="我们都知道：String 字符串常量StringBuffer 字符串变量（线程安全）StringBuilder 字符串变量（非线程安全)那么，为什么StringBuilder不是线程安全的。 分析StringBuilder和StringBuffer的内部实现跟String类一样，都是通过一个char数组存储字符串的，不同的是String类里面的char数组是final修饰的，是不可变的，而Stri">
-<meta name="twitter:image" content="https://leiii33-1300432004.cos.ap-chengdu.myqcloud.com/StringBuilderTest.png">
+<meta name="twitter:title" content="JVM:从入门到放弃">
+<meta name="twitter:description" content="Java的口号是什么？“一次编译，到处运行！” 简单聊聊JVM我们在刚开始学习Java的时候，一定使用过javac来编译.java文件，然后使用java来运行.class文件。1.1 编译过程：.java文件是使用Java源码编译器（也就是上面说到的javac.exe）来完成的。总结一下就是由以下三个过程组成：1.2 JVM实现跨平台：通过Java源码编译器，我们成功的将.java文件生成出.cl">
+<meta name="twitter:image" content="https://leiii33-1300432004.cos.ap-chengdu.myqcloud.com/javac.jpg">
   
   
   <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -112,14 +114,14 @@
     </div>
 </header>
       <div class="outer">
-        <section id="main" class="body-wrap"><article id="post-为什么StringBuilder不是线程安全的" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main" class="body-wrap"><article id="post-JVM-从入门到放弃" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="post-title" itemprop="name">
-      为什么StringBuilder不是线程安全的
+      JVM:从入门到放弃
     </h1>
     <div class="post-title-bar">
       <ul>
@@ -132,7 +134,7 @@
               </li>
           
         <li>
-          <i class="fa fa-calendar"></i>  2019-09-15
+          <i class="fa fa-calendar"></i>  2019-11-15
         </li>
         <li>
           <i class="fa fa-eye"></i>
@@ -148,14 +150,61 @@
     <div class="article-entry post-content" itemprop="articleBody">
       
             
-            <p>我们都知道：<br><strong>String 字符串常量<br>StringBuffer 字符串变量（线程安全）<br>StringBuilder 字符串变量（非线程安全)</strong><br>那么，为什么StringBuilder不是线程安全的。</p>
-<h4 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h4><p>StringBuilder和StringBuffer的内部实现跟String类一样，都是通过一个char数组存储字符串的，不同的是String类里面的char数组是final修饰的，是不可变的，而StringBuilder和StringBuffer的char数组是可变的。<br><br><br>首先，我们可以了解一下StringBuffer和StringBuilder的异同。<br><a href="https://blog.csdn.net/u011732080/article/details/88407968" target="_blank" rel="noopener">String,StringBuilder以及StringBuffer这三个类之间的区别</a><br>下面，我们通过一段代码来看看如果我们多线程操作了StringBuilder对象会发生什么。<br><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">StringBuilderTest</span> &#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span>(<span class="params">String[] args</span>) throws InterruptedException</span> &#123;</span><br><span class="line">        StringBuilder stringBuilder = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">        StringBuffer stringBuffer = <span class="keyword">new</span> StringBuffer();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++)&#123;</span><br><span class="line">            <span class="keyword">new</span> Thread(<span class="keyword">new</span> Runnable() &#123;</span><br><span class="line">                @Override</span><br><span class="line">                <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">                    <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; <span class="number">10000</span>; j++)&#123;</span><br><span class="line">                        stringBuilder.append(<span class="string">"a"</span>);</span><br><span class="line">                        stringBuffer.append(<span class="string">"b"</span>);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;).start();</span><br><span class="line">        &#125;</span><br><span class="line">        Thread.sleep(<span class="number">100</span>);</span><br><span class="line">        System.<span class="keyword">out</span>.println(<span class="string">"stringBuilder的长度："</span>+stringBuilder.length());</span><br><span class="line">        System.<span class="keyword">out</span>.println(<span class="string">"stringBuffer的长度："</span>+stringBuffer.length());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>在这段代码中，我们创建了10个进程，每个进程循环10000次向StringBuilder对象<code>stringBuilder</code>和StringBuffer对象<code>stringBuffer</code>中append字符a、b。<br>如果其中没有出错的话，最后的输出字符串的长度应该是100000。<br>但实际上的结果是：<br><img src="https://leiii33-1300432004.cos.ap-chengdu.myqcloud.com/StringBuilderTest.png" alt="StringBuilderTest"><br>那么为什么结果会和预期的值不一样呢。<br>我们先来看一看StringBuilder的append()方法：<br><img src="https://leiii33-1300432004.cos.ap-chengdu.myqcloud.com/StringBuilderappend.png" alt><br>StringBuilder的append()方法调用的是父类AbstractStringBuilder的append()方法：<br><img src="https://leiii33-1300432004.cos.ap-chengdu.myqcloud.com/AbstractStringBuilderappend.png" alt><br>我们可以看到，其中 count += len 不是一个原子操作。当多个线程同时执行的时候，取得的count值都是一样的，但是执行完加法后赋值给count，count的值只增加了1，但是实际上却是多个线程同时执行了这一步，这就是为什么结果比预计值要小的原因。<br>同理就可以分析出StringBuffer为什么是线程安全的了。</p>
+            <p>Java的口号是什么？“一次编译，到处运行！”</p>
+<h3 id="简单聊聊JVM"><a href="#简单聊聊JVM" class="headerlink" title="简单聊聊JVM"></a>简单聊聊JVM</h3><p>我们在刚开始学习Java的时候，一定使用过<code>javac</code>来编译<code>.java</code>文件，然后使用<code>java</code>来运行<code>.class</code>文件。<br>1.1 编译过程：<br><code>.java</code>文件是使用Java源码编译器（也就是上面说到的<code>javac.exe</code>）来完成的。<br><img src="https://leiii33-1300432004.cos.ap-chengdu.myqcloud.com/javac.jpg" alt="Java源码编译器流程"><br>总结一下就是由以下三个过程组成：<br><img src="https://leiii33-1300432004.cos.ap-chengdu.myqcloud.com/javac3.png" alt><br>1.2 JVM实现跨平台：<br>通过Java源码编译器，我们成功的将<code>.java</code>文件生成出<code>.class</code>文件。这些<code>.class</code>文件是不能直接运行的，它不像是C/C++。<br>这些生成的<code>.class</code>文件是交给JVM来解析运行的。<br>JDK是区分操作系统的，只要你安装了JDK，那么这个JDK就可以匹配你的操作系统。JDK中的JVM是运行在操作系统上的，<code>.class</code>文件是运行在JVM上的，所以完全不需要担心字节码是在哪个系统操作系统上编译完成的，只要符合标准，那么就完全可以运行。这样，Java就实现了“一次编译，到处运行”。<br>1.3 类的加载时机：<br>生成后的<code>.class</code>文件中的类都会加载进JVM中吗？<br>实际上，JVM严格的规范了哪些情况下会对类立刻进行初始化：  </p>
+<ul>
+<li>创建类的实例(new 的方式)。访问某个类或接口的静态变量，或者对该静态变量赋值，调用类的静态方法；</li>
+<li>反射的方式；</li>
+<li>初始化某个类的子类，则其父类也会被初始化；</li>
+<li>Java虚拟机启动时被标明为启动类的类，直接使用java.exe命令来运行某个主类（包含main方法的那个类）。  </li>
+</ul>
+<p>所以，JVM中类的加载是动态的，它不会一次性将所有的类都加载运行，而是保证程序运行的基础类（像是基类）完全加载到jvm中，至于其他类，则在需要的时候才加载。当然这是为了节省内存开销。<br>1.4 如何将类加载到JVM中：<br><code>.class</code>文件通过类的加载器装载到JVM中。<br>Java中的类加载器：<br><img src="https://leiii33-1300432004.cos.ap-chengdu.myqcloud.com/classloader.png" alt="ClassLoader"><br>每种加载器的工作职责：  </p>
+<ul>
+<li>Bootstrap ClassLoader：负责加载$JAVA_HOME中jre/lib/rt.jar里所有的class，由C++实现，不是ClassLoader子类；</li>
+<li>Extension ClassLoader：负责加载java平台中扩展功能的一些jar包，包括$JAVA_HOME中jre/lib/ext/*.jar或-Djava.ext.dirs指定目录下的jar包；</li>
+<li>App ClassLoader：负责记载classpath中指定的jar包及目录中class。  </li>
+</ul>
+<p>工作流程：  </p>
+<ul>
+<li>当AppClassLoader加载一个class时，它首先不会自己去尝试加载这个类，而是把类加载请求委派给父类加载器ExtClassLoader去完成。</li>
+<li>当ExtClassLoader加载一个class时，它首先也不会自己去尝试加载这个类，而是把类加载请求委派给BootStrapClassLoader去完成。</li>
+<li>如果BootStrapClassLoader加载失败（例如在$JAVA_HOME/jre/lib里未查找到该class），会使用ExtClassLoader来尝试加载；</li>
+<li>若ExtClassLoader也加载失败，则会使用AppClassLoader来加载；</li>
+<li>如果AppClassLoader也加载失败，则会报出异常ClassNotFoundException。  </li>
+</ul>
+<p>其实这就是所谓的<strong>双亲委派模型</strong>。简单来说：如果一个类加载器收到了类加载的请求，它首先不会自己去尝试加载这个类，而是把请求委托给父加载器去完成，依次向上。<br><strong>优点</strong>就是可以防止内存中出现多份同样的字节码。<br><strong>备注</strong>：<br>类加载器在成功加载某个类之后，会把得到的 java.lang.Class类的实例缓存起来。下次再请求加载该类的时候，类加载器会直接使用缓存的类的实例，而不会尝试再次加载。<br>1.5 JIT即时编译器<br>JVM加载了<code>.class</code>文件以后，难道会逐条取出，逐条执行吗？<br>如果是设想的这样的话，速度就太慢了。<br>实际上，JVM有自己的想法：  </p>
+<ul>
+<li>将这些Java字节码重新编译优化，生成机器码，让CPU直接执行。这样编出来的代码效率会更高；</li>
+<li>编译也是要花费时间的，我们一般对热点代码做编译，非热点代码直接解析就好了。 </li>
+</ul>
+<p>备注：热点代码包含(1).多次调用的方法；(2).多次执行的循环体。<br>那么我们怎么知道是不是热点代码，我们可以通过热点探测来检测。目前的热点探测使用计数器的方式，它为每个方法准备了两类计数器：  </p>
+<ul>
+<li>方法调用计数器（Invocation  Counter）</li>
+<li>回边计数器（Back  EdgeCounter）</li>
+<li>在确定虚拟机运行参数的前提下，这两个计数器都有一个确定的阈值，当计数器超过阈值溢出了，就会触发JIT编译。</li>
+</ul>
+<p><img src="https://leiii33-1300432004.cos.ap-chengdu.myqcloud.com/JIT.png" alt><br>拓展阅读：</p>
+<ul>
+<li><a href="https://www.ibm.com/developerworks/cn/java/j-lo-classloader/" target="_blank" rel="noopener">https://www.ibm.com/developerworks/cn/java/j-lo-classloader/</a>  深入探讨 Java 类加载器（还有其他不错的文章可以学习）</li>
+<li><a href="https://zhuanlan.zhihu.com/p/28476709" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/28476709</a>  JVM杂谈之JIT</li>
+</ul>
+<p>1.6 JVM的内存结构<br>我们可以来看看JVM内存结构：<br><img src="https://leiii33-1300432004.cos.ap-chengdu.myqcloud.com/JVM%E5%86%85%E5%AD%98%E7%BB%93%E6%9E%84.jpg" alt>  </p>
+<ul>
+<li>堆：存放对象实例，几乎所有的对象实例都在这里分配内存；</li>
+<li>虚拟机栈：虚拟机栈描述的是Java方法执行的内存结构：每个方法被执行的时候都会同时创建一个栈帧（Stack Frame）用于存储局部变量表、操作栈、动态链接、方法出口等信息；</li>
+<li>本地方法栈：本地方法栈则是为虚拟机使用到的Native方法服务；</li>
+<li>方法区：存储已被虚拟机加载的类元数据信息(元空间)；</li>
+<li>程序计数器：当前线程所执行的字节码的行号指示器。</li>
+</ul>
+<p>1.7 工作流程：  </p>
+<p>参考文章：<br><a href="https://www.cnblogs.com/qiumingcheng/p/5398610.html" target="_blank" rel="noopener">https://www.cnblogs.com/qiumingcheng/p/5398610.html</a>  Java程序编译和运行的过程</p>
+<hr>
+<p><strong>未完待续，嘻嘻</strong></p>
 
             <div class="post-copyright">
     <div class="content">
-        <p>最后更新： 2019年10月15日 22:43</p>
-        <p>原始链接： <a class="post-url" href="/2019/09/15/为什么StringBuilder不是线程安全的/" title="为什么StringBuilder不是线程安全的">http://leiii33.github.io/2019/09/15/为什么StringBuilder不是线程安全的/</a></p>
+        <p>最后更新： 2019年11月17日 23:36</p>
+        <p>原始链接： <a class="post-url" href="/2019/11/15/JVM-从入门到放弃/" title="JVM:从入门到放弃">http://leiii33.github.io/2019/11/15/JVM-从入门到放弃/</a></p>
         <footer>
             <a href="http://leiii33.github.io">
                 <img src="/images/L.png" alt="Leiii33">
@@ -181,7 +230,7 @@
     <div class="post-share-list" id="share-list">
         <ul class="share-icons">
           <li>
-            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://leiii33.github.io/2019/09/15/为什么StringBuilder不是线程安全的/&title=《为什么StringBuilder不是线程安全的》 — 横渠书馆&pic=https://leiii33-1300432004.cos.ap-chengdu.myqcloud.com/StringBuilder.jpg" data-title="微博">
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://leiii33.github.io/2019/11/15/JVM-从入门到放弃/&title=《JVM:从入门到放弃》 — 横渠书馆&pic=https://leiii33-1300432004.cos.ap-chengdu.myqcloud.com/JVM.jpg" data-title="微博">
               <i class="fa fa-weibo"></i>
             </a>
           </li>
@@ -191,22 +240,22 @@
             </a>
           </li>
           <li>
-            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://leiii33.github.io/2019/09/15/为什么StringBuilder不是线程安全的/&title=《为什么StringBuilder不是线程安全的》 — 横渠书馆&source=" data-title="QQ">
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://leiii33.github.io/2019/11/15/JVM-从入门到放弃/&title=《JVM:从入门到放弃》 — 横渠书馆&source=" data-title="QQ">
               <i class="fa fa-qq"></i>
             </a>
           </li>
           <li>
-            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://leiii33.github.io/2019/09/15/为什么StringBuilder不是线程安全的/" data-title="Facebook">
+            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://leiii33.github.io/2019/11/15/JVM-从入门到放弃/" data-title="Facebook">
               <i class="fa fa-facebook"></i>
             </a>
           </li>
           <li>
-            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《为什么StringBuilder不是线程安全的》 — 横渠书馆&url=http://leiii33.github.io/2019/09/15/为什么StringBuilder不是线程安全的/&via=http://leiii33.github.io" data-title="Twitter">
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《JVM:从入门到放弃》 — 横渠书馆&url=http://leiii33.github.io/2019/11/15/JVM-从入门到放弃/&via=http://leiii33.github.io" data-title="Twitter">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
           <li>
-            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://leiii33.github.io/2019/09/15/为什么StringBuilder不是线程安全的/" data-title="Google+">
+            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://leiii33.github.io/2019/11/15/JVM-从入门到放弃/" data-title="Google+">
               <i class="fa fa-google-plus"></i>
             </a>
           </li>
@@ -216,7 +265,7 @@
 <div class="post-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;" id="wxShare-close">×</a>
     <p>扫一扫，分享到微信</p>
-    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://leiii33.github.io/2019/09/15/为什么StringBuilder不是线程安全的/" alt="微信分享二维码">
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://leiii33.github.io/2019/11/15/JVM-从入门到放弃/" alt="微信分享二维码">
 </div>
 
 <div class="mask"></div>
@@ -242,19 +291,9 @@
 
 <nav id="article-nav">
   
-    <a href="/2019/09/16/设计模式/" id="article-nav-newer" class="article-nav-link-wrap">
-
-      <span class="article-nav-title">
-        <i class="fa fa-hand-o-left" aria-hidden="true"></i>
-        
-          设计模式
-        
-      </span>
-    </a>
   
-  
-    <a href="/2019/09/14/SRP/" id="article-nav-older" class="article-nav-link-wrap">
-      <span class="article-nav-title">单一职责原则</span>
+    <a href="/2019/10/19/MyBatis2/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title">MyBatis2</span>
       <i class="fa fa-hand-o-right" aria-hidden="true"></i>
     </a>
   
