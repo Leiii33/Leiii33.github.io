@@ -3,22 +3,22 @@
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
   
-  <title>单一职责原则 | 横渠书馆</title>
+  <title>春秋（一） | 横渠书馆</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
     <meta name="keywords" content="Leiii's Blog">
   
-  <meta name="description" content="面向对象设计的六大原则 单一职责原则（SRP） 开闭原则（OCP） 里式替换原则（LSP） 依赖倒置原则（DIP） 接口隔离原则（ISP） 迪米特原则（LOD）    掌握这些原则可以帮助我们很好的理解面向对象的概念，同时也对学习设计模式有很大的帮助。 （一）单一职责原则定义：有且仅有一个原因引起一个类的改变。简单的说，就是一个类只有一个职责。在编写代码的时候，我们要尽量做到低耦合、高内聚的特点，">
+  <meta name="description" content="春秋（一）《旧唐书·魏徵传》李世民：“夫以铜为镜,可以正衣冠，以史为镜，可以知兴替,以人为镜,可以明得失。”所以从今天开始，慢慢的读一读我国第一部编年体史书———《春秋》。在读《春秋》之前，我们可以先简单了解一下春秋。很多人都知道，周朝分为西周和东周。公元前1046年，周武王姬发建立西周，定都镐京，成王建东都洛邑（今洛阳）。公元前771年，周平王迁都洛邑，史称东周。东周的前半段，诸侯相互争霸，是为">
 <meta property="og:type" content="article">
-<meta property="og:title" content="单一职责原则">
-<meta property="og:url" content="http://leiii33.github.io/2019/09/14/SRP/index.html">
+<meta property="og:title" content="春秋（一）">
+<meta property="og:url" content="http://leiii33.github.io/2019/11/24/春秋（一）/index.html">
 <meta property="og:site_name" content="横渠书馆">
-<meta property="og:description" content="面向对象设计的六大原则 单一职责原则（SRP） 开闭原则（OCP） 里式替换原则（LSP） 依赖倒置原则（DIP） 接口隔离原则（ISP） 迪米特原则（LOD）    掌握这些原则可以帮助我们很好的理解面向对象的概念，同时也对学习设计模式有很大的帮助。 （一）单一职责原则定义：有且仅有一个原因引起一个类的改变。简单的说，就是一个类只有一个职责。在编写代码的时候，我们要尽量做到低耦合、高内聚的特点，">
+<meta property="og:description" content="春秋（一）《旧唐书·魏徵传》李世民：“夫以铜为镜,可以正衣冠，以史为镜，可以知兴替,以人为镜,可以明得失。”所以从今天开始，慢慢的读一读我国第一部编年体史书———《春秋》。在读《春秋》之前，我们可以先简单了解一下春秋。很多人都知道，周朝分为西周和东周。公元前1046年，周武王姬发建立西周，定都镐京，成王建东都洛邑（今洛阳）。公元前771年，周平王迁都洛邑，史称东周。东周的前半段，诸侯相互争霸，是为">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-10-16T14:06:20.166Z">
+<meta property="og:updated_time" content="2019-11-24T07:51:58.183Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="单一职责原则">
-<meta name="twitter:description" content="面向对象设计的六大原则 单一职责原则（SRP） 开闭原则（OCP） 里式替换原则（LSP） 依赖倒置原则（DIP） 接口隔离原则（ISP） 迪米特原则（LOD）    掌握这些原则可以帮助我们很好的理解面向对象的概念，同时也对学习设计模式有很大的帮助。 （一）单一职责原则定义：有且仅有一个原因引起一个类的改变。简单的说，就是一个类只有一个职责。在编写代码的时候，我们要尽量做到低耦合、高内聚的特点，">
+<meta name="twitter:title" content="春秋（一）">
+<meta name="twitter:description" content="春秋（一）《旧唐书·魏徵传》李世民：“夫以铜为镜,可以正衣冠，以史为镜，可以知兴替,以人为镜,可以明得失。”所以从今天开始，慢慢的读一读我国第一部编年体史书———《春秋》。在读《春秋》之前，我们可以先简单了解一下春秋。很多人都知道，周朝分为西周和东周。公元前1046年，周武王姬发建立西周，定都镐京，成王建东都洛邑（今洛阳）。公元前771年，周平王迁都洛邑，史称东周。东周的前半段，诸侯相互争霸，是为">
   
   
   <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -107,14 +107,14 @@
     </div>
 </header>
       <div class="outer">
-        <section id="main" class="body-wrap"><article id="post-SRP" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main" class="body-wrap"><article id="post-春秋（一）" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="post-title" itemprop="name">
-      单一职责原则
+      春秋（一）
     </h1>
     <div class="post-title-bar">
       <ul>
@@ -122,12 +122,12 @@
               <li>
                   <i class="fa fa-book"></i>
                   
-                      <a href="/categories/-设计模式/">-设计模式</a>
+                      <a href="/categories/春秋/">春秋</a>
                   
               </li>
           
         <li>
-          <i class="fa fa-calendar"></i>  2019-09-14
+          <i class="fa fa-calendar"></i>  2019-11-24
         </li>
         <li>
           <i class="fa fa-eye"></i>
@@ -143,21 +143,12 @@
     <div class="article-entry post-content" itemprop="articleBody">
       
             
-            <h3 id="面向对象设计的六大原则"><a href="#面向对象设计的六大原则" class="headerlink" title="面向对象设计的六大原则"></a>面向对象设计的六大原则</h3><ul>
-<li>单一职责原则（SRP）</li>
-<li>开闭原则（OCP）</li>
-<li>里式替换原则（LSP）</li>
-<li>依赖倒置原则（DIP）</li>
-<li>接口隔离原则（ISP）</li>
-<li>迪米特原则（LOD）  </li>
-</ul>
-<p>掌握这些原则可以帮助我们很好的理解面向对象的概念，同时也对学习设计模式有很大的帮助。</p>
-<h4 id="（一）单一职责原则"><a href="#（一）单一职责原则" class="headerlink" title="（一）单一职责原则"></a>（一）单一职责原则</h4><p>定义：有且仅有一个原因引起一个类的改变。简单的说，就是一个类只有一个职责。<br>在编写代码的时候，我们要尽量做到低耦合、高内聚的特点，单一职责原则正是为了保证类与类之间的低耦合。当一个类承担多个职责的时候，导致这个类改变的原因就会有很多，就很有可能影响到别的功能，代码的维护成本也会变高。<br>看起来，单一职责原则是一个很简单的原则，但是能够运用好也不是一件简单的事情。在实际的问题中，有很多职责之间是有所联系的，如何合理的拆分职责以满足单一职责原则也是需要好好思索的。<br><br><br>单一职责原则的优点：<br>类的复杂性降低，实现什么职责都有明确的定义，提高了可读性；<br>逻辑简单，代码的可维护性也提高了；<br>低耦合性，变更的风险降低，只会在单一的类中的修改。</p>
+            <h3 id="春秋（一）"><a href="#春秋（一）" class="headerlink" title="春秋（一）"></a>春秋（一）</h3><p>《旧唐书·魏徵传》李世民：“夫以铜为镜,可以正衣冠，以史为镜，可以知兴替,以人为镜,可以明得失。”<br>所以从今天开始，慢慢的读一读我国第一部编年体史书———《春秋》。在读《春秋》之前，我们可以先简单了解一下春秋。<br>很多人都知道，周朝分为西周和东周。公元前1046年，周武王姬发建立西周，定都镐京，成王建东都洛邑（今洛阳）。公元前771年，周平王迁都洛邑，史称东周。东周的前半段，诸侯相互争霸，是为春秋。公元前453年，韩赵魏三家分晋，诸侯相互征伐，是为战国。<br>春秋的开始，与大家都知道的一个人物有关，她就是褒姒。当时天下的共主，是西周的第十二任天子，也是最后一位天子——周幽王姬宫涅。姬宫涅非常宠幸褒姒。褒姒不喜欢笑，他就想尽办法逗褒姒开心。褒姒喜欢听裂帛之声，幽王就取来丝帛让人斯给她听。甚至为了博褒姒一笑，点燃烽火，戏弄诸侯。当然，烽火戏诸侯仅仅是一个故事，它的真实性我们不再讨论。当然，这都不是西周灭亡的理由。<br>周幽王姬宫涅的第一任王后是申后，太子是姬宜臼。但是褒姒想要自己做王后，让自己的儿子伯服做太子。姬宜臼就准备废掉王后，杀掉太子。事情就从这里开始变得不可收拾。<br>申后是申国人，姬宜臼为了逃避被杀的命运，就跑去申国找自己的外公，申侯。申侯听到这些事情后，十分愤怒，但是申国的实力不允许他们独自对抗周王室，于是，申侯联合了犬戎一同进攻都城，结果攻破都城，杀姬宫涅于骊山脚下，西周就此灭亡。<br>周幽王死后，申侯与其他一些诸侯拥立姬宜臼为周天子，是为周平王。周平王继位以后，由于都城已经在战争中被大肆损毁，犬戎也对新王虎视眈眈，再加上他继位有着弑父的嫌疑，所以他决定将都城东迁至洛邑，从此，周王朝一分为二，东迁之后被称为东周，同时，春秋也拉开序幕。<br>迁都之后的周王朝，王室京畿大幅度的缩水，实力大不如前。又因为平王继位名不正言不顺，一些以前被王室压制有所不满的诸侯国纷纷变得活跃起来，王室权威不断衰落。那么春秋时期，就是王室权威还有那么一些权威却也是大不如前的一个时期。<br>从西周开始，就有太史来专门编写史书，它们的写法我们以后会看到。那么春秋实际上是鲁国的国史，还有其他的例如：晋国的国史《乘》、秦国的国史《秦记》、楚国的国史《梼杌》。但是这些史书在汉朝的时候就没有人见过了，也许是秦始皇焚书的时候全部烧毁了吧。完整留下来的只有鲁国的《春秋》了，就这样，一个诸侯国的史书就变成了中国史，整个史书记录的时代就以它命名，叫做春秋。现存的《春秋》从鲁隐公记述到鲁哀公，历十二代君主，计二百四十四年，记录了二百多年来各诸侯国之间的大事，基本上是鲁国史书的原文。<br>2011年开始发掘的海昏侯墓中，出土了五千多枚竹简，经过专家解读，其中就包括了《春秋》等儒家经典，为研究《春秋》具有重要意义。</p>
 
             <div class="post-copyright">
     <div class="content">
-        <p>最后更新： 2019年10月16日 22:06</p>
-        <p>原始链接： <a class="post-url" href="/2019/09/14/SRP/" title="单一职责原则">http://leiii33.github.io/2019/09/14/SRP/</a></p>
+        <p>最后更新： 2019年11月24日 15:51</p>
+        <p>原始链接： <a class="post-url" href="/2019/11/24/春秋（一）/" title="春秋（一）">http://leiii33.github.io/2019/11/24/春秋（一）/</a></p>
         <footer>
             <a href="http://leiii33.github.io">
                 <img src="/images/L.png" alt="Leiii33">
@@ -183,7 +174,7 @@
     <div class="post-share-list" id="share-list">
         <ul class="share-icons">
           <li>
-            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://leiii33.github.io/2019/09/14/SRP/&title=《单一职责原则》 — 横渠书馆&pic=https://leiii33-1300432004.cos.ap-chengdu.myqcloud.com/SRP.jpg" data-title="微博">
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://leiii33.github.io/2019/11/24/春秋（一）/&title=《春秋（一）》 — 横渠书馆&pic=https://leiii33-1300432004.cos.ap-chengdu.myqcloud.com/cq.jpg" data-title="微博">
               <i class="fa fa-weibo"></i>
             </a>
           </li>
@@ -193,22 +184,22 @@
             </a>
           </li>
           <li>
-            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://leiii33.github.io/2019/09/14/SRP/&title=《单一职责原则》 — 横渠书馆&source=" data-title="QQ">
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://leiii33.github.io/2019/11/24/春秋（一）/&title=《春秋（一）》 — 横渠书馆&source=" data-title="QQ">
               <i class="fa fa-qq"></i>
             </a>
           </li>
           <li>
-            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://leiii33.github.io/2019/09/14/SRP/" data-title="Facebook">
+            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://leiii33.github.io/2019/11/24/春秋（一）/" data-title="Facebook">
               <i class="fa fa-facebook"></i>
             </a>
           </li>
           <li>
-            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《单一职责原则》 — 横渠书馆&url=http://leiii33.github.io/2019/09/14/SRP/&via=http://leiii33.github.io" data-title="Twitter">
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《春秋（一）》 — 横渠书馆&url=http://leiii33.github.io/2019/11/24/春秋（一）/&via=http://leiii33.github.io" data-title="Twitter">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
           <li>
-            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://leiii33.github.io/2019/09/14/SRP/" data-title="Google+">
+            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://leiii33.github.io/2019/11/24/春秋（一）/" data-title="Google+">
               <i class="fa fa-google-plus"></i>
             </a>
           </li>
@@ -218,7 +209,7 @@
 <div class="post-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;" id="wxShare-close">×</a>
     <p>扫一扫，分享到微信</p>
-    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://leiii33.github.io/2019/09/14/SRP/" alt="微信分享二维码">
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://leiii33.github.io/2019/11/24/春秋（一）/" alt="微信分享二维码">
 </div>
 
 <div class="mask"></div>
@@ -237,19 +228,9 @@
 
 <nav id="article-nav">
   
-    <a href="/2019/09/15/为什么StringBuilder不是线程安全的/" id="article-nav-newer" class="article-nav-link-wrap">
-
-      <span class="article-nav-title">
-        <i class="fa fa-hand-o-left" aria-hidden="true"></i>
-        
-          为什么StringBuilder不是线程安全的
-        
-      </span>
-    </a>
   
-  
-    <a href="/2019/06/25/bingchaji/" id="article-nav-older" class="article-nav-link-wrap">
-      <span class="article-nav-title">并查集</span>
+    <a href="/2019/11/22/22日英语学习/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title">22日英语学习</span>
       <i class="fa fa-hand-o-right" aria-hidden="true"></i>
     </a>
   

@@ -3,22 +3,18 @@
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
   
-  <title>单一职责原则 | 横渠书馆</title>
+  <title>Category: 春秋 | 横渠书馆</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
     <meta name="keywords" content="Leiii's Blog">
   
-  <meta name="description" content="面向对象设计的六大原则 单一职责原则（SRP） 开闭原则（OCP） 里式替换原则（LSP） 依赖倒置原则（DIP） 接口隔离原则（ISP） 迪米特原则（LOD）    掌握这些原则可以帮助我们很好的理解面向对象的概念，同时也对学习设计模式有很大的帮助。 （一）单一职责原则定义：有且仅有一个原因引起一个类的改变。简单的说，就是一个类只有一个职责。在编写代码的时候，我们要尽量做到低耦合、高内聚的特点，">
-<meta property="og:type" content="article">
-<meta property="og:title" content="单一职责原则">
-<meta property="og:url" content="http://leiii33.github.io/2019/09/14/SRP/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="横渠书馆">
+<meta property="og:url" content="http://leiii33.github.io/categories/春秋/index.html">
 <meta property="og:site_name" content="横渠书馆">
-<meta property="og:description" content="面向对象设计的六大原则 单一职责原则（SRP） 开闭原则（OCP） 里式替换原则（LSP） 依赖倒置原则（DIP） 接口隔离原则（ISP） 迪米特原则（LOD）    掌握这些原则可以帮助我们很好的理解面向对象的概念，同时也对学习设计模式有很大的帮助。 （一）单一职责原则定义：有且仅有一个原因引起一个类的改变。简单的说，就是一个类只有一个职责。在编写代码的时候，我们要尽量做到低耦合、高内聚的特点，">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-10-16T14:06:20.166Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="单一职责原则">
-<meta name="twitter:description" content="面向对象设计的六大原则 单一职责原则（SRP） 开闭原则（OCP） 里式替换原则（LSP） 依赖倒置原则（DIP） 接口隔离原则（ISP） 迪米特原则（LOD）    掌握这些原则可以帮助我们很好的理解面向对象的概念，同时也对学习设计模式有很大的帮助。 （一）单一职责原则定义：有且仅有一个原因引起一个类的改变。简单的说，就是一个类只有一个职责。在编写代码的时候，我们要尽量做到低耦合、高内聚的特点，">
+<meta name="twitter:title" content="横渠书馆">
   
   
   <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -107,157 +103,42 @@
     </div>
 </header>
       <div class="outer">
-        <section id="main" class="body-wrap"><article id="post-SRP" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+        <section id="main" class="body-wrap">
   
-    <h1 class="post-title" itemprop="name">
-      单一职责原则
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2019" class="archive-year">2019</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      <a href="/2019/11/24/春秋（一）/" class="archive-article-date">
+  <time datetime="2019-11-24T06:39:24.000Z" itemprop="datePublished">11-24</time>
+</a>
+      
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2019/11/24/春秋（一）/">春秋（一）</a>
     </h1>
-    <div class="post-title-bar">
-      <ul>
-          
-              <li>
-                  <i class="fa fa-book"></i>
-                  
-                      <a href="/categories/-设计模式/">-设计模式</a>
-                  
-              </li>
-          
-        <li>
-          <i class="fa fa-calendar"></i>  2019-09-14
-        </li>
-        <li>
-          <i class="fa fa-eye"></i>
-          <span id="busuanzi_value_page_pv"></span>
-        </li>
-      </ul>
-    </div>
   
 
-          
-      </header>
-    
-    <div class="article-entry post-content" itemprop="articleBody">
+    </header>
       
-            
-            <h3 id="面向对象设计的六大原则"><a href="#面向对象设计的六大原则" class="headerlink" title="面向对象设计的六大原则"></a>面向对象设计的六大原则</h3><ul>
-<li>单一职责原则（SRP）</li>
-<li>开闭原则（OCP）</li>
-<li>里式替换原则（LSP）</li>
-<li>依赖倒置原则（DIP）</li>
-<li>接口隔离原则（ISP）</li>
-<li>迪米特原则（LOD）  </li>
-</ul>
-<p>掌握这些原则可以帮助我们很好的理解面向对象的概念，同时也对学习设计模式有很大的帮助。</p>
-<h4 id="（一）单一职责原则"><a href="#（一）单一职责原则" class="headerlink" title="（一）单一职责原则"></a>（一）单一职责原则</h4><p>定义：有且仅有一个原因引起一个类的改变。简单的说，就是一个类只有一个职责。<br>在编写代码的时候，我们要尽量做到低耦合、高内聚的特点，单一职责原则正是为了保证类与类之间的低耦合。当一个类承担多个职责的时候，导致这个类改变的原因就会有很多，就很有可能影响到别的功能，代码的维护成本也会变高。<br>看起来，单一职责原则是一个很简单的原则，但是能够运用好也不是一件简单的事情。在实际的问题中，有很多职责之间是有所联系的，如何合理的拆分职责以满足单一职责原则也是需要好好思索的。<br><br><br>单一职责原则的优点：<br>类的复杂性降低，实现什么职责都有明确的定义，提高了可读性；<br>逻辑简单，代码的可维护性也提高了；<br>低耦合性，变更的风险降低，只会在单一的类中的修改。</p>
-
-            <div class="post-copyright">
-    <div class="content">
-        <p>最后更新： 2019年10月16日 22:06</p>
-        <p>原始链接： <a class="post-url" href="/2019/09/14/SRP/" title="单一职责原则">http://leiii33.github.io/2019/09/14/SRP/</a></p>
-        <footer>
-            <a href="http://leiii33.github.io">
-                <img src="/images/L.png" alt="Leiii33">
-                Leiii33
-            </a>
-        </footer>
-    </div>
-</div>
-
-      
-        
-            
-
-        
-    </div>
-    <footer class="article-footer">
-        
-        
-<div class="post-share">
-    <a href="javascript:;" id="share-sub" class="post-share-fab">
-        <i class="fa fa-share-alt"></i>
-    </a>
-    <div class="post-share-list" id="share-list">
-        <ul class="share-icons">
-          <li>
-            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://leiii33.github.io/2019/09/14/SRP/&title=《单一职责原则》 — 横渠书馆&pic=https://leiii33-1300432004.cos.ap-chengdu.myqcloud.com/SRP.jpg" data-title="微博">
-              <i class="fa fa-weibo"></i>
-            </a>
-          </li>
-          <li>
-            <a class="weixin share-sns" id="wxFab" href="javascript:;" data-title="微信">
-              <i class="fa fa-weixin"></i>
-            </a>
-          </li>
-          <li>
-            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://leiii33.github.io/2019/09/14/SRP/&title=《单一职责原则》 — 横渠书馆&source=" data-title="QQ">
-              <i class="fa fa-qq"></i>
-            </a>
-          </li>
-          <li>
-            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://leiii33.github.io/2019/09/14/SRP/" data-title="Facebook">
-              <i class="fa fa-facebook"></i>
-            </a>
-          </li>
-          <li>
-            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《单一职责原则》 — 横渠书馆&url=http://leiii33.github.io/2019/09/14/SRP/&via=http://leiii33.github.io" data-title="Twitter">
-              <i class="fa fa-twitter"></i>
-            </a>
-          </li>
-          <li>
-            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://leiii33.github.io/2019/09/14/SRP/" data-title="Google+">
-              <i class="fa fa-google-plus"></i>
-            </a>
-          </li>
-        </ul>
-     </div>
-</div>
-<div class="post-modal wx-share" id="wxShare">
-    <a class="close" href="javascript:;" id="wxShare-close">×</a>
-    <p>扫一扫，分享到微信</p>
-    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://leiii33.github.io/2019/09/14/SRP/" alt="微信分享二维码">
-</div>
-
-<div class="mask"></div>
-
-        
-        <ul class="article-footer-menu">
-            
-            
-        </ul>
-        
-    </footer>
   </div>
 </article>
 
-
-
-<nav id="article-nav">
-  
-    <a href="/2019/09/15/为什么StringBuilder不是线程安全的/" id="article-nav-newer" class="article-nav-link-wrap">
-
-      <span class="article-nav-title">
-        <i class="fa fa-hand-o-left" aria-hidden="true"></i>
-        
-          为什么StringBuilder不是线程安全的
-        
-      </span>
-    </a>
   
   
-    <a href="/2019/06/25/bingchaji/" id="article-nav-older" class="article-nav-link-wrap">
-      <span class="article-nav-title">并查集</span>
-      <i class="fa fa-hand-o-right" aria-hidden="true"></i>
-    </a>
+    </div></section>
   
-</nav>
 
-
-
-    
 </section>
         
       </div>
